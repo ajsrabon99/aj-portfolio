@@ -497,6 +497,27 @@ span{
     width: 80px;
     margin-bottom: 1rem;
 }
+/* Desktop View: 4 cards per row */
+.skills-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 cards per row */
+    gap: 2rem; /* Space between cards */
+    margin-top: 2rem;
+}
+
+/* Mobile View: 2 cards per row */
+@media (max-width: 768px) { /* Adjust max-width to your preference */
+    .skills-container {
+        grid-template-columns: repeat(2, 1fr); /* 2 cards per row */
+    }
+}
+
+/* Small Mobile View: 1 card per row (optional for very small screens) */
+@media (max-width: 480px) {
+    .skills-container {
+        grid-template-columns: 1fr; /* 1 card per row */
+    }
+}
 
 
 
@@ -781,4 +802,126 @@ footer {
 /* Adjust Footer Icons */
 .footer-social-icons a {
     font-size: 2rem;
+}
+/* Base adjustments for tablets (iPads, etc.) */
+@media (max-width: 1024px) {
+    /* Adjust general font sizes and paddings */
+    html {
+        font-size: 55%; /* Slightly smaller base font size */
+    }
+
+    header {
+        padding: 1rem 8%;
+    }
+
+    .home .home-content h1 {
+        font-size: 5rem; /* Slightly smaller headline */
+    }
+
+    .skills-container {
+        grid-template-columns: repeat(2, 1fr); /* 2 cards per row for medium screens */
+    }
+}
+
+/* Specific adjustments for smaller tablets and large mobile phones */
+@media (max-width: 768px) {
+    .home {
+        gap: 4rem; /* Reduce gap between content in smaller screens */
+    }
+
+    .logo {
+        font-size: 2.5rem; /* Slightly smaller logo font */
+    }
+
+    nav a {
+        font-size: 1.6rem; /* Smaller nav links */
+        margin-left: 2rem;
+    }
+
+    .skills-container {
+        grid-template-columns: repeat(2, 1fr); /* Adjust skill cards to 2 per row */
+    }
+
+    .projects-container {
+        grid-template-columns: 1fr; /* Single column layout for projects */
+    }
+
+    .about .row {
+        flex-direction: column; /* Stack content vertically */
+    }
+
+    .about .row .image img {
+        width: 80%; /* Adjust image size */
+    }
+
+    .education-item {
+        padding: 1.5rem; /* Adjust padding for better fit */
+    }
+}
+
+/* Further adjustments for smaller mobile devices (large phones) */
+@media (max-width: 480px) {
+    html {
+        font-size: 50%; /* Smaller font base for smaller devices */
+    }
+
+    .home .home-content h1 {
+        font-size: 3.5rem;
+    }
+
+    .home .home-content h3 {
+        font-size: 2rem;
+    }
+
+    .home-img img {
+        width: 70vw; /* Adjust image size to fit mobile view */
+    }
+
+    .skills-container {
+        grid-template-columns: 1fr; /* One card per row */
+    }
+
+    .education-container {
+        padding: 2rem 1rem;
+    }
+
+    .project-item img {
+        height: 150px; /* Adjust project image height */
+    }
+}
+
+/* Smallest mobile devices (small phones) */
+@media (max-width: 360px) {
+    .logo {
+        font-size: 2rem; /* Smaller logo */
+    }
+
+    .menu-icon {
+        font-size: 2rem;
+    }
+
+    .about .row .content p {
+        font-size: 1.2rem; /* Smaller paragraph text */
+    }
+
+    .contact input, .contact textarea {
+        padding: 0.8rem;
+        font-size: 1rem;
+    }
+
+    .contact button {
+        font-size: 1.4rem;
+    }
+
+    footer {
+        padding: 2rem 5%;
+    }
+
+    .footer-content h3 {
+        font-size: 1.8rem;
+    }
+
+    .footer-content p {
+        font-size: 1rem;
+    }
 }
