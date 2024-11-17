@@ -3,7 +3,7 @@
     
 <head>
     <meta charset="UTF-8">
-    <link rel="shortcut icon" type="x-icon" href="logo.jpeg">
+    <link rel="shortcut icon" type="x-icon" href="./assest/images/logo.jpeg">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link rel="stylesheet" href="style.css">
@@ -11,21 +11,21 @@
 </head>
 <body>
     <header>
-        <a href="#" class="logo"><img src="logoback.png" alt="Logo Image" class="logo-image">Srabon</a>  
+        <a href="#" class="logo"><img src="./assest/images/logoback.png" alt="Logo Image" class="logo-image">Srabon</a>  
         <div class="menu-icon" id="menu-icon"><i class="fas fa-bars"></i></div>
 
         <nav id="nav-menu">
             <a href="#" class="active">Home</a>
+            <a href="#about">About me</a>
             <a href="#skill">Skills</a>
             <a href="#edu">Education</a>
             <a href="#projects">Projects</a>
-            <a href="#about">About me</a>
             <a href="#contact">Contact</a>
         </nav>
     </header>
     <section class="home">
         <div class="home-img">
-            <img src="aj.jpg" alt="">
+            <img src="./assest/images/aj.jpg" alt="">
         </div>
         <div class="home-content">
             <h2>Hi, I'm <span>AJ Srabon</span></h2>
@@ -42,80 +42,12 @@
             <a href="tel:+8801327206804" class="btn">Call me</a>
         </div>
     </section>
-    <section class="skills" id="skill">
-        <h2>Skills</h2>
-        <div class="skills-container">
-            <div class="skill"><i class="fa-brands fa-html5"></i> HTML</div>
-            <div class="skill"><i class="fa-brands fa-css3-alt"></i> CSS</div>
-            <div class="skill"><i class="fa-brands fa-js"></i> JavaScript</div>
-            <div class="skill"><i class="fa-brands fa-python"></i> Python</div>
-            <div class="skill"><i class="fa-brands fa-django"></i> Django</div>
-            <div class="skill"><i class="fa-brands fa-react"></i> React</div>
-            <div class="skill"><i class="fa-brands fa-git-alt"></i> Git</div>
-            <div class="skill"><i class="fa-brands fa-node-js"></i> Node.js</div>
-        </div>
-    </section>
-    <hr>
-    <section class="education" id="edu">
-        <h2>Education</h2>
-        <div class="education-container">
-            <div class="education-item">
-                <img src="dpi_img.png" alt="Dhaka Polytechnic Institute Logo" class="edu-logo">
-                <h3>Diploma in Computer Science</h3>
-                <p>Dhaka Polytechnic Institute</p>
-                <span>2022 - 2026</span>
-                <p>Gained comprehensive knowledge in computer science fundamentals, web development, and software engineering.</p>
-            </div>
-            <div class="education-item">
-                <img src="ostad_image.png" alt="Ostad Logo" class="edu-logo">
-                <h3>Full Stack Web development</h3>
-                <p>Ostad</p>
-                <span>2024</span>
-                <p>I completed a Full Stack Web Development course from Ostad, focusing on Python, Django, and React to build dynamic applications.</p>
-            </div>
-        </div>
-    </section>
-    
-
-
-    <section class="projects" id="projects">
-        <h2>Projects</h2>
-        <div class="projects-container">
-            <div class="project-item">
-                <img src="project1.jpeg" alt="Project 1">
-                <div class="project-info">
-                    <h3>Project One</h3>
-                    <p>A Simple Calculator using Python</p>
-                    <a href="https://github.com/ajsrabon99/simple_calculator" class="btn">View Project</a>
-                </div>
-            </div>
-            <div class="project-item">
-                <img src="project2.jpg" alt="Project 2">
-                <div class="project-info">
-                    <h3>Project Two</h3>
-                    <p>I create a Tic Tac Toe Games Using Python</p>
-                    <a href="https://github.com/ajsrabon99/tic-tac-game" class="btn">View Project</a>
-                </div>
-            </div>
-            <div class="project-item">
-                <img src="project3.jpeg" alt="Project 3">
-                <div class="project-info">
-                    <h3>Project Three</h3>
-                    <p>A School Management System using SQL database</p>
-                    <a href="https://github.com/ajsrabon99/school_management" class="btn">View Project</a>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-
-
 
     <section class="about" id="about">
         <h1>About me</h1>
         <div class="row">
             <div class="image">
-                <img src="aboutimage.jpg" alt="AJ Srabon" />
+                <img src="./assest/images/aboutimage.jpg" alt="AJ Srabon" />
             </div>
             <div class="content">
                 <h3>I'm <span>AJ Srabon</span></h3>
@@ -128,10 +60,111 @@
                         <p>Specialized in <span>Front-end & Back-end</span></p>
                     </div>
                 </div>
+                <!-- Resume Button -->
+                <a href="resume.pdf" class="resume_btn" target="_blank">Resume</a>
             </div>
         </div>
     </section>
+    
 
+    <section class="skills" id="skill">
+        <h2>Skills</h2>
+        <div class="skills-container">
+            <!-- Skill Card 1 -->
+            <div class="skill">
+                <img src="./assest/images/skills_icon/HTML_icon.png" alt="HTML Logo" class="skill-icon">
+                <p>HTML</p>
+            </div>
+            <!-- Skill Card 2 -->
+            <div class="skill">
+                <img src="./assest/images/skills_icon/CSS_icon.png" alt="CSS Logo" class="skill-icon">
+                <p>CSS</p>
+            </div>
+            <!-- Skill Card 3 -->
+            <div class="skill">
+                <img src="./assest/images/skills_icon/js_icon.png" alt="JavaScript Logo" class="js-icon">
+                <p>JavaScript</p>
+            </div>
+            <!-- Skill Card 4 -->
+            <div class="skill">
+                <img src="./assest/images/skills_icon/python_icon.png" alt="Python Logo" class="skill-icon">
+                <p>Python</p>
+            </div>
+            <!-- Skill Card 5 -->
+            <div class="skill">
+                <img src="./assest/images/skills_icon/django_icon.png" alt="Django Logo" class="skill-icon">
+                <p>Django</p>
+            </div>
+            <!-- Skill Card 6 -->
+            <div class="skill">
+                <img src="./assest/images/skills_icon/react_icon.png" alt="React Logo" class="skill-icon">
+                <p>React</p>
+            </div>
+            <!-- Skill Card 7 -->
+            <div class="skill">
+                <img src="./assest/images/skills_icon/git_icon.png" alt="Git Logo" class="git-icon">
+                <p>Git</p>
+            </div>
+            <!-- Skill Card 8 -->
+            <div class="skill">
+                <img src="./assest/images/skills_icon/nodeJS_icon.png" alt="Node.js Logo" class="skill-icon">
+                <p>Node.js</p>
+            </div>
+        </div>            
+    </section>
+    
+    <hr>
+    <section class="education" id="edu">
+        <h2>Education</h2>
+        <div class="education-container">
+            <div class="education-item">
+                <img src="./assest/images/dpi_img.png" alt="Dhaka Polytechnic Institute Logo" class="edu-logo">
+                <h3>Diploma in Computer Science</h3>
+                <p>Dhaka Polytechnic Institute</p>
+                <span>2022 - 2026</span>
+                <p>Gained comprehensive knowledge in computer science fundamentals, web development, and software engineering.</p>
+            </div>
+            <div class="education-item">
+                <img src="./assest/images/ostad_image.png" alt="Ostad Logo" class="edu-logo">
+                <h3>Full Stack Web development</h3>
+                <p>Ostad</p>
+                <span>2024</span>
+                <p>I completed a Full Stack Web Development course from Ostad, focusing on Python, Django, and React to build dynamic applications.</p>
+            </div>
+        </div>
+    </section>
+    
+
+    <section class="projects" id="projects">
+        <h2>Projects</h2>
+        <div class="projects-container">
+            <div class="project-item">
+                <img src="./assest/images/project1.jpg" alt="Project 1">
+                <div class="project-info">
+                    <h3>Project One</h3>
+                    <p>A Simple Calculator using Python</p>
+                    <a href="https://github.com/ajsrabon99/simple_calculator" class="btn">View Project</a>
+                </div>
+            </div>
+            <div class="project-item">
+                <img src="./assest/images/project2.jpg" alt="Project 2">
+                <div class="project-info">
+                    <h3>Project Two</h3>
+                    <p>I create a Tic Tac Toe Games Using Python</p>
+                    <a href="https://github.com/ajsrabon99/tic-tac-game" class="btn">View Project</a>
+                </div>
+            </div>
+            <div class="project-item">
+                <img src="./assest/images/project3.jpeg" alt="Project 3">
+                <div class="project-info">
+                    <h3>Project Three</h3>
+                    <p>A School Management System using SQL database</p>
+                    <a href="https://github.com/ajsrabon99/school_management" class="btn">View Project</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
 
     <section class="contact" id="contact">
         <h2>Contact Me</h2>
@@ -144,8 +177,7 @@
         </form>
     </section>
 
-    
-    
+
 
     <footer>
         <div class="footer-content">
