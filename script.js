@@ -34,16 +34,4 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
-const scriptURL = 'https://script.google.com/macros/s/AKfycbwL0fuYqIgN9tXdMusGpox3NjIrjNOk8QltDhV7FGDYMp3r7poV9h6oEKIQdnjXZ1wM/exec'
 
-
-const form = document.forms['contact-form']
-
-
-form.addEventListener('submit', e => {
-  e.preventDefault()
-  fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-  .then(response => alert("Thank you! your form is submitted successfully." ))
-  .then(() => { window.location.reload(); })
-  .catch(error => console.error('Error!', error.message))
-})

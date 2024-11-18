@@ -722,7 +722,7 @@ span{
     height: 150px;
 }
 
-.contact button {
+#submit {
     font-size: 1.6rem;
     padding: 1rem 2rem;
     color: black;
@@ -732,10 +732,11 @@ span{
     transition: 0.3s;
 }
 
-.contact button:hover {
+#submit:hover {
     background-color: white;
     color: #b74b4b;
     transform: scale(1.05);
+    box-shadow: #b74b4b;
 }
 footer {
     background-color: #161616;
