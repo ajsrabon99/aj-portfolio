@@ -538,9 +538,9 @@ span{
 .education-container {
     margin-top: 2rem;
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
     gap: 2rem;
-    align-items: center;
+    justify-content: center;
     text-align: left;
 }
 
@@ -552,9 +552,23 @@ span{
     width: 100%;
     text-align: left;
     transition: 0.3s ease;
+    flex: 1 1 calc(50% - 2rem); /* Two cards in a row on larger screens */
 }
 
-.edu-logo {
+@media (max-width: 768px) {
+    .education-item {
+        flex: 1 1 100%; /* Full width on smaller screens */
+    }
+}
+
+
+.edu-logo1 {
+    width: 100%;  /* Adjust the width to your preference */
+    height: 50%;
+    margin-bottom: 10px;
+    display: block;
+}
+.edu-logo2 {
     width: 100%;  /* Adjust the width to your preference */
     height: auto;
     margin-bottom: 10px;
