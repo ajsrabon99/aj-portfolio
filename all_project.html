@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Projects</title>
+    <link rel="stylesheet" href="css/all_project.css">
+    <style>
+        /* Go Back Button Style */
+        .go-back-button {
+            background-color: #ffffff;
+            color: #000000;
+            text-align: center;
+            width: 12rem;
+            height: 3.5rem;
+            border-radius: 1rem;
+            font-size: 1.25rem;
+            font-weight: 600;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.4s ease-in-out;
+        }
+
+        .go-back-button .hover-effect {
+            background-color: #34d399; /* Green color */
+            height: 3rem;
+            width: 25%;
+            position: absolute;
+            left: 0.25rem;
+            top: 0.25rem;
+            border-radius: 0.75rem;
+            z-index: 1;
+            transition: width 0.5s ease-in-out;
+        }
+
+        .go-back-button:hover .hover-effect {
+            width: 11.5rem;
+        }
+
+        .go-back-button p {
+            position: relative;
+            z-index: 2;
+            margin: 0;
+            transition: transform 0.4s ease-in-out;
+        }
+
+        .go-back-button:hover p {
+            transform: translateX(0.5rem);
+        }
+
+        .go-back-button svg {
+            position: relative;
+            z-index: 2;
+            margin-right: 0.5rem;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <section class="projects-section">
+            
+
+            <h1><span>Projects</span> Made</h1>
+
+            <div class="project-cards">
+                <div class="card">
+                    <img src="assest/project/macbook.png" alt="Project 1">
+                    <p>Simplify Note Taking</p>
+                    <div class="button-group">
+                        <button class="view-button"onclick="window.location.href='https://simple-prjct.netlify.app/'">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" height="20px" width="20px" fill="#ffffff">
+                                <path d="M512 192C308.16 192 128 372.16 128 512c0 139.84 180.16 320 384 320s384-180.16 384-320c0-139.84-180.16-320-384-320zM512 768c-141.44 0-256-114.56-256-256s114.56-256 256-256 256 114.56 256 256-114.56 256-256 256z"></path>
+                                <path d="M396.8 468.48l212.8 212.8a32 32 0 1 0 45.44-45.44l-212.8-212.8a32 32 0 0 0-45.44 45.44z"></path>
+                            </svg>
+                            View
+                        </button>
+                        <button class="code-button" onclick="window.location.href='https://github.com/ajsrabon99/project_macbook'">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" height="20px" width="20px" fill="#ffffff">
+                                <path d="M864 128H160c-35.2 0-64 28.8-64 64v640c0 35.2 28.8 64 64 64h704c35.2 0 64-28.8 64-64V192c0-35.2-28.8-64-64-64zM512 704c-70.4 0-128-57.6-128-128s57.6-128 128-128 128 57.6 128 128-57.6 128-128 128zM512 384c-141.6 0-256-114.4-256-256s114.4-256 256-256 256 114.4 256 256-114.4 256-256 256z"></path>
+                            </svg>
+                            Code
+                        </button>
+                    </div>
+                </div>
+                <div class="card">
+                    <img src="assest/project/bootslandr.png" alt="Project 2">
+                    <p>Quick Search Your Notes</p>
+                    <div class="button-group">
+                        <button class="view-button"onclick="window.location.href='https://bootslander-ostad-assignment4.netlify.app/'">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" height="20px" width="20px" fill="#ffffff">
+                                <path d="M512 192C308.16 192 128 372.16 128 512c0 139.84 180.16 320 384 320s384-180.16 384-320c0-139.84-180.16-320-384-320zM512 768c-141.44 0-256-114.56-256-256s114.56-256 256-256 256 114.56 256 256-114.56 256-256 256z"></path>
+                                <path d="M396.8 468.48l212.8 212.8a32 32 0 1 0 45.44-45.44l-212.8-212.8a32 32 0 0 0-45.44 45.44z"></path>
+                            </svg>
+                            View
+                        </button>
+                        <button class="code-button"onclick="window.location.href='https://github.com/ajsrabon99/Bootslander-WebSite">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" height="20px" width="20px" fill="#ffffff">
+                                <path d="M864 128H160c-35.2 0-64 28.8-64 64v640c0 35.2 28.8 64 64 64h704c35.2 0 64-28.8 64-64V192c0-35.2-28.8-64-64-64zM512 704c-70.4 0-128-57.6-128-128s57.6-128 128-128 128 57.6 128 128-57.6 128-128 128zM512 384c-141.6 0-256-114.4-256-256s114.4-256 256-256 256 114.4 256 256-114.4 256-256 256z"></path>
+                            </svg>
+                            Code
+                        </button>
+                    </div>
+                </div>
+                <!-- Repeat for other project cards -->
+            </div>
+            
+            <br>
+            <br>
+            <hr>
+            <br>
+            <button class="go-back-button" onclick="window.location.href='index.html#projects'" style="background-color: #010053; color: white;">
+                <div class="hover-effect"></div>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" height="20px" width="20px" fill="white">
+                    <path d="M224 480h640a32 32 0 1 1 0 64H224a32 32 0 0 1 0-64z"></path>
+                    <path d="m237.248 512 265.408 265.344a32 32 0 0 1-45.312 45.312l-288-288a32 32 0 0 1 0-45.312l288-288a32 32 0 1 1 45.312 45.312L237.248 512z"></path>
+                </svg>
+                <p>Go Back</p>
+            </button>
+            
+            
+        </section>
+    </main>
+</body>
+
+</html>

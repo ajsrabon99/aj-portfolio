@@ -255,7 +255,7 @@ button {
     position: relative;
     padding: 12px 35px;
     background: #b74b4b;
-    font-size: 17px;
+    font-size: 13px;
     font-weight: 500;
     color: #181818;
     border: 3px solid #b74b4b;
@@ -402,7 +402,59 @@ button {
   .fil0 {
     fill: #fffdef;
   }
-  
+  /* From Uiverse.io by adamgiebl */
+  .dots-container {
+    display: none; /* Initially hidden */
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100%;
+}
+
+.dot {
+    height: 20px;
+    width: 20px;
+    margin-right: 10px;
+    border-radius: 10px;
+    background-color: #b3d4fc;
+    animation: pulse 1.5s infinite ease-in-out;
+}
+
+.dot:last-child {
+    margin-right: 0;
+}
+
+.dot:nth-child(1) {
+    animation-delay: -0.3s;
+}
+
+.dot:nth-child(2) {
+    animation-delay: -0.1s;
+}
+
+.dot:nth-child(3) {
+    animation-delay: 0.1s;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(0.8);
+        background-color: #b3d4fc;
+        box-shadow: 0 0 0 0 rgba(178, 212, 252, 0.7);
+    }
+
+    50% {
+        transform: scale(1.2);
+        background-color: #6793fb;
+        box-shadow: 0 0 0 10px rgba(178, 212, 252, 0);
+    }
+
+    100% {
+        transform: scale(0.8);
+        background-color: #b3d4fc;
+        box-shadow: 0 0 0 0 rgba(178, 212, 252, 0.7);
+    }
+}
 
 /* About section starts */
 .about{
@@ -824,6 +876,71 @@ button {
 .project-info .btn:hover {
     background-color: #555; /* Adjust hover color */
 }
+.see-more {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.see-more {
+    display: inline-block;
+  transition: all 0.2s ease-in;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  color: #ffffff;
+  padding: 0.7em 1.7em;
+  cursor: pointer;
+  font-size: 13px;
+  border-radius: 0.5em;
+  background: transparent;
+  border: 1px solid #e8e8e8;
+  box-shadow: 6px 6px 12px #b74b4b, -6px -6px 12px #1bb584;
+}
+.see-more:active{
+    color: #ffffff;
+}
+.see-more::before{
+    content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%) scaleY(1) scaleX(1.25);
+  top: 100%;
+  width: 140%;
+  height: 180%;
+  background-color: rgba(0, 0, 0, 0.05);
+  border-radius: 50%;
+  display: block;
+  transition: all 0.5s 0.1s cubic-bezier(0.55, 0, 0.1, 1);
+  z-index: -1;
+}
+.see-more:after{
+    content: "";
+  position: absolute;
+  left: 55%;
+  transform: translateX(-50%) scaleY(1) scaleX(1.45);
+  top: 180%;
+  width: 160%;
+  height: 190%;
+  background-color: #b74b4b;
+  border-radius: 50%;
+  display: block;
+  transition: all 0.5s 0.1s cubic-bezier(0.55, 0, 0.1, 1);
+  z-index: -1;
+}
+.see-more:hover {
+    top: -35%;
+    background-color: #b74b4b;
+    color: white;
+    /* transform:  scaleY(0.9) scaleX(1.4); */
+  }
+.see-more:hover::after{
+    top: -45%;
+  background-color: #1bb584;
+  transform: translateX(-50%) scaleY(0.9) scaleX(1.0);
+
+}
+
+
 
 /* Responsive adjustments for mobile devices */
 @media (max-width: 480px) {
