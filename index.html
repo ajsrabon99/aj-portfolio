@@ -151,8 +151,15 @@
                 </div>
                 <br>
                 <!-- Resume Button -->
-                <button class="resume_btn"><a href="assest/images/resume.png">Resume</a> </button>
-
+                <div class="resume-container">
+                    <button class="resume_btn" id="resumeBtn" onclick="showOptions()">Resume</button>
+                    <div class="resume-options" id="resumeOptions">
+                      <button class="option_btn"><a href="assest/resume/resume.png" target="_blank">View</a></button>
+                      <button class="option_btn"><a href="assest/resume/resume.pdf" download>Download</a></button>
+                      <button class="close_btn" onclick="hideOptions()">×</button>
+                    </div>
+                  </div>
+                  
             </div>
         </div>
     </section>

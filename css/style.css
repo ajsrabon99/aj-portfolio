@@ -477,8 +477,8 @@ button {
 
 
 
-/* From Uiverse.io by vikiWayne */ 
-   .resume_btn {
+/* Main Resume Button */
+.resume_btn {
     padding: 1em 2em;
     border: none;
     border-radius: 5px;
@@ -486,7 +486,7 @@ button {
     letter-spacing: 5px;
     text-transform: uppercase;
     cursor: pointer;
-    color: #b74b4b;
+    color: white;
     transition: all 1000ms;
     font-size: 10px;
     position: relative;
@@ -518,6 +518,53 @@ button {
     width: 250%;
   }
   
+  /* Options Buttons */
+  .resume-options {
+    display: none;
+    text-align: center;
+    margin-top: 10px;
+  }
+  
+  .option_btn {
+    padding: 0.5em 1.5em;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    color: #ffffff;
+    margin: 5px;
+    font-size: 12px;
+    transition: all 0.3s ease;
+  }
+  
+  .option_btn:hover {
+    background-color: #e03b3b;
+  }
+  
+  .option_btn a {
+    text-decoration: none;
+    color: #ffffff;
+  }
+  
+  /* Close Button */
+  .close_btn {
+    background-color: transparent;
+    color: #b74b4b;
+    font-size: 20px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: color 0.3s ease;
+  }
+  
+  .close_btn:hover {
+    color: #e03b3b;
+    background-color: transparent;
+  }
+  
+  
 
 
 
@@ -536,8 +583,8 @@ button {
 
 .skills-container {
     display: grid;
-    grid-template-columns: repeat(4, 1fr); /* 4 cards per row */
-    gap: 2rem; /* Space between cards */
+    grid-template-columns: repeat(4, 1fr); 
+    gap: 2rem; 
     margin-top: 2rem;
 }
 
@@ -725,8 +772,7 @@ button {
 }
 
 .project-item:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 0 30px white;
+    transform: translateY(-5px);
 }
 
 .project-item img {
@@ -761,7 +807,7 @@ button {
 }
 
 .project-info .btn:hover {
-    background-color: #555; /* Adjust hover color */
+    background-color: #961212; /* Adjust hover color */
 }
 .see-more {
     text-align: center;

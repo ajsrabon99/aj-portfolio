@@ -1,20 +1,20 @@
 document.addEventListener("DOMContentLoaded", function () {
     const menuIcon = document.getElementById("menu-icon");
     const navMenu = document.getElementById("nav-menu");
-    const navLinks = document.querySelectorAll("#nav-menu a"); // Select all links in the nav menu
+    const navLinks = document.querySelectorAll("#nav-menu a"); 
 
     // Function to open the navigation menu
     const openMenu = () => {
         navMenu.classList.add("open");
-        menuIcon.classList.add("hidden"); // Hide the menu icon
-        document.addEventListener("click", handleClickOutside); // Add listener for outside clicks
+        menuIcon.classList.add("hidden");  
+        document.addEventListener("click", handleClickOutside); 
     };
 
     // Function to close the navigation menu
     const closeMenu = () => {
         navMenu.classList.remove("open");
-        menuIcon.classList.remove("hidden"); // Show the menu icon
-        document.removeEventListener("click", handleClickOutside); // Remove listener for outside clicks
+        menuIcon.classList.remove("hidden"); 
+        document.removeEventListener("click", handleClickOutside); 
     };
 
     // Close the navigation menu when clicking outside of it
@@ -34,3 +34,13 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
+function showOptions() {
+    document.getElementById('resumeBtn').style.display = 'none';  
+    document.getElementById('resumeOptions').style.display = 'block';  
+  }
+  
+  function hideOptions() {
+    document.getElementById('resumeBtn').style.display = 'block';  
+    document.getElementById('resumeOptions').style.display = 'none'; 
+  }
+  
