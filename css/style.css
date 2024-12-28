@@ -635,7 +635,7 @@ button {
 }
 
 .skills-container .skill:nth-child(8):hover {
-    background-color: #68a063; /* Node.js - Dark Green */
+    background-color: #ee00ff; /* Node.js - Dark Green */
     color: #fff;
 }
 
