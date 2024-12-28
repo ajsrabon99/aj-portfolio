@@ -626,7 +626,7 @@ button {
 
 .skills-container .skill:nth-child(6):hover {
     background-color: #39b3d4; /* React - Light Blue */
-    color: #000;
+    color: #fff;
 }
 
 .skills-container .skill:nth-child(7):hover {
