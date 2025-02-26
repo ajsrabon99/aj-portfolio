@@ -827,7 +827,6 @@ button {
   border-radius: 0.5em;
   background: transparent;
   border: 1px solid #e8e8e8;
-  box-shadow: 6px 6px 12px #b74b4b, -6px -6px 12px #1bb584;
 }
 .see-more:active{
     color: #ffffff;
