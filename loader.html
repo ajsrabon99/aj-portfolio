@@ -1,44 +1,392 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Loading...</title>
-    <link rel="stylesheet" href="css/loader.css">
+    <title>Loading - AJ Srabon</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+            overflow: hidden;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .loader-container {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        /* Animated background circles */
+        .bg-circle {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.1;
+            animation: float 20s ease-in-out infinite;
+        }
+
+        .bg-circle:nth-child(1) {
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, #ff6b35 0%, transparent 70%);
+            top: -150px;
+            left: -150px;
+            animation-delay: 0s;
+        }
+
+        .bg-circle:nth-child(2) {
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, #2563eb 0%, transparent 70%);
+            bottom: -200px;
+            right: -200px;
+            animation-delay: 5s;
+        }
+
+        .bg-circle:nth-child(3) {
+            width: 250px;
+            height: 250px;
+            background: radial-gradient(circle, #ff6b35 0%, transparent 70%);
+            top: 50%;
+            right: -125px;
+            animation-delay: 10s;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translate(0, 0) scale(1);
+            }
+            33% {
+                transform: translate(50px, -50px) scale(1.1);
+            }
+            66% {
+                transform: translate(-50px, 50px) scale(0.9);
+            }
+        }
+
+        /* Logo container with pulse effect */
+        .logo-wrapper {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10;
+        }
+
+        /* Rotating circles around logo */
+        .circle-orbit {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border: 3px solid transparent;
+            border-radius: 50%;
+            animation: rotate 3s linear infinite;
+        }
+
+        .circle-orbit:nth-child(1) {
+            border-top-color: #ff6b35;
+            border-right-color: #ff6b35;
+            animation-duration: 2s;
+        }
+
+        .circle-orbit:nth-child(2) {
+            border-bottom-color: #2563eb;
+            border-left-color: #2563eb;
+            animation-duration: 3s;
+            animation-direction: reverse;
+        }
+
+        .circle-orbit:nth-child(3) {
+            width: 85%;
+            height: 85%;
+            border-top-color: #ff6b35;
+            opacity: 0.5;
+            animation-duration: 2.5s;
+        }
+
+        @keyframes rotate {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Logo with pulse animation */
+        .logo {
+            width: 200px;
+            height: 200px;
+            object-fit: contain;
+            animation: pulse 2s ease-in-out infinite;
+            filter: drop-shadow(0 0 30px rgba(255, 107, 53, 0.5));
+            position: relative;
+            z-index: 5;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+                filter: drop-shadow(0 0 30px rgba(255, 107, 53, 0.5));
+            }
+            50% {
+                transform: scale(1.05);
+                filter: drop-shadow(0 0 50px rgba(255, 107, 53, 0.8));
+            }
+        }
+
+        /* Loading text */
+        .loading-text {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #fff;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            position: relative;
+            z-index: 10;
+        }
+
+        .loading-text::after {
+            content: '';
+            animation: dots 1.5s steps(4, end) infinite;
+        }
+
+        @keyframes dots {
+            0%, 20% {
+                content: '';
+            }
+            40% {
+                content: '.';
+            }
+            60% {
+                content: '..';
+            }
+            80%, 100% {
+                content: '...';
+            }
+        }
+
+        /* Progress bar */
+        .progress-container {
+            width: 300px;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+            z-index: 10;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #ff6b35, #2563eb, #ff6b35);
+            background-size: 200% 100%;
+            border-radius: 10px;
+            animation: progress 3s ease-in-out infinite, gradient 2s linear infinite;
+            box-shadow: 0 0 20px rgba(255, 107, 53, 0.5);
+        }
+
+        @keyframes progress {
+            0% {
+                width: 0%;
+            }
+            50% {
+                width: 70%;
+            }
+            100% {
+                width: 100%;
+            }
+        }
+
+        @keyframes gradient {
+            0% {
+                background-position: 0% 50%;
+            }
+            100% {
+                background-position: 200% 50%;
+            }
+        }
+
+        /* Percentage text */
+        .percentage {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #fff;
+            margin-top: 1rem;
+            letter-spacing: 2px;
+            opacity: 0.8;
+            z-index: 10;
+        }
+
+        /* Particles effect */
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: #ff6b35;
+            border-radius: 50%;
+            pointer-events: none;
+            opacity: 0;
+            animation: particle-rise 3s ease-out infinite;
+        }
+
+        @keyframes particle-rise {
+            0% {
+                opacity: 0;
+                transform: translateY(0) scale(1);
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(-200px) scale(0);
+            }
+        }
+
+        /* Glowing effect */
+        .glow {
+            position: absolute;
+            width: 250px;
+            height: 250px;
+            background: radial-gradient(circle, rgba(255, 107, 53, 0.3) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: glow-pulse 2s ease-in-out infinite;
+            z-index: 1;
+        }
+
+        @keyframes glow-pulse {
+            0%, 100% {
+                transform: scale(1);
+                opacity: 0.5;
+            }
+            50% {
+                transform: scale(1.2);
+                opacity: 0.8;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .logo-wrapper {
+                width: 250px;
+                height: 250px;
+            }
+
+            .logo {
+                width: 160px;
+                height: 160px;
+            }
+
+            .loading-text {
+                font-size: 1.4rem;
+            }
+
+            .progress-container {
+                width: 250px;
+            }
+        }
+    </style>
 </head>
-
 <body>
+    <!-- Background animated circles -->
+    <div class="bg-circle"></div>
+    <div class="bg-circle"></div>
+    <div class="bg-circle"></div>
 
-    <!-- Bottom Loader -->
-    <div class="loader">
-        <div class="loading-text">
-            Loading<span class="dot">.</span><span class="dot">.</span><span class="dot">.</span>
+    <div class="loader-container">
+        <!-- Logo with rotating circles -->
+        <div class="logo-wrapper">
+            <div class="glow"></div>
+            <div class="circle-orbit"></div>
+            <div class="circle-orbit"></div>
+            <div class="circle-orbit"></div>
+            <img src="./assest/images/logoback2.png" alt="AJ Srabon Logo" class="logo">
         </div>
-        <div class="loading-bar-background">
-            <div class="loading-bar">
-                <div class="white-bars-container">
-                    <div class="white-bar"></div>
-                    <div class="white-bar"></div>
-                    <div class="white-bar"></div>
-                    <div class="white-bar"></div>
-                    <div class="white-bar"></div>
-                    <div class="white-bar"></div>
-                    <div class="white-bar"></div>
-                    <div class="white-bar"></div>
-                    <div class="white-bar"></div>
-                    <div class="white-bar"></div>
-                </div>
-            </div>
+
+        <!-- Loading text -->
+        <div class="loading-text">Loading</div>
+
+        <!-- Progress bar -->
+        <div class="progress-container">
+            <div class="progress-bar"></div>
         </div>
+
+        <!-- Percentage -->
+        <div class="percentage" id="percentage">0%</div>
     </div>
 
     <script>
-        // Redirect to all_project.html after 4 seconds
-        setTimeout(() => {
-            window.location.href = "all_project.html";
-        }, 4000);
+        // Percentage counter
+        const percentageElement = document.getElementById('percentage');
+        let percentage = 0;
+
+        const percentageInterval = setInterval(() => {
+            if (percentage < 100) {
+                percentage += Math.floor(Math.random() * 10) + 1;
+                if (percentage > 100) percentage = 100;
+                percentageElement.textContent = percentage + '%';
+            } else {
+                clearInterval(percentageInterval);
+                // Redirect after loading complete (optional)
+                setTimeout(() => {
+                    window.location.href = 'all_project.html';
+                    // Or show content
+                    document.body.innerHTML = '<h1 style="color: white; text-align: center; margin-top: 50vh;">Loading Complete!</h1>';
+                }, 500);
+            }
+        }, 100);
+
+        // Create floating particles
+        function createParticle() {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            
+            // Random position around the logo
+            const angle = Math.random() * Math.PI * 2;
+            const distance = 100 + Math.random() * 50;
+            const x = Math.cos(angle) * distance;
+            const y = Math.sin(angle) * distance;
+            
+            particle.style.left = `calc(50% + ${x}px)`;
+            particle.style.top = `calc(50% + ${y}px)`;
+            particle.style.animationDelay = `${Math.random() * 2}s`;
+            
+            // Random color (orange or blue)
+            particle.style.background = Math.random() > 0.5 ? '#ff6b35' : '#2563eb';
+            
+            document.body.appendChild(particle);
+            
+            // Remove particle after animation
+            setTimeout(() => {
+                particle.remove();
+            }, 3000);
+        }
+
+        // Create particles continuously
+        setInterval(createParticle, 200);
+
+        // Initial burst of particles
+        for (let i = 0; i < 10; i++) {
+            setTimeout(createParticle, i * 100);
+        }
     </script>
 </body>
-
 </html>
