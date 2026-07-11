@@ -161,52 +161,70 @@
             </div>
         </div>
     </section>
-    <!-- Skill Section  -->
+    <!-- Skill Section -->
     <section class="skills" id="skill">
         <h2>Skills</h2>
-        <div class="skills-container">
-            <!-- Skill Card 1 -->
-            <div class="skill">
-                <img src="./assest/images/skills_icon/HTML_icon.png" alt="HTML Logo" class="skill-icon">
-                <p>HTML</p>
-            </div>
-            <!-- Skill Card 2 -->
-            <div class="skill">
-                <img src="./assest/images/skills_icon/CSS_icon.png" alt="CSS Logo" class="skill-icon">
-                <p>CSS</p>
-            </div>
-            <!-- Skill Card 3 -->
-            <div class="skill">
-                <img src="./assest/images/skills_icon/js_icon.png" alt="JavaScript Logo" class="js-icon">
-                <p>JavaScript</p>
-            </div>
-            <!-- Skill Card 4 -->
-            <div class="skill">
-                <img src="./assest/images/skills_icon/python_icon.png" alt="Python Logo" class="skill-icon">
-                <p>Python</p>
-            </div>
-            <!-- Skill Card 5 -->
-            <div class="skill">
-                <img src="./assest/images/skills_icon/django_icon.png" alt="Django Logo" class="skill-icon">
-                <p>Django</p>
-            </div>
-            <!-- Skill Card 6 -->
-            <div class="skill">
-                <img src="./assest/images/skills_icon/react_icon.png" alt="React Logo" class="skill-icon">
-                <p>React</p>
-            </div>
-            <!-- Skill Card 7 -->
-            <div class="skill">
-                <img src="./assest/images/skills_icon/git_icon.png" alt="Git Logo" class="git-icon">
-                <p>Git</p>
-            </div>
-            <!-- Skill Card 8 -->
-            <div class="skill">
-                <img src="assest/images/skills_icon/bootstrap.png" alt="Node.js Logo" class="skill-icon">
-                <p>Bootstrap</p>
+        <div class="skills-marquee">
+            <div class="skills-track" id="skillsTrack">
+                <!-- Skill Card 1 -->
+                <div class="skill">
+                    <img src="./assest/images/skills_icon/HTML_icon.png" alt="HTML Logo" class="skill-icon">
+                    <p>HTML</p>
+                </div>
+                <!-- Skill Card 2 -->
+                <div class="skill">
+                    <img src="./assest/images/skills_icon/CSS_icon.png" alt="CSS Logo" class="skill-icon">
+                    <p>CSS</p>
+                </div>
+                <!-- Skill Card 3 -->
+                <div class="skill">
+                    <img src="./assest/images/skills_icon/js_icon.png" alt="JavaScript Logo" class="js-icon">
+                    <p>JavaScript</p>
+                </div>
+                <!-- Skill Card 4 -->
+                <div class="skill">
+                    <img src="./assest/images/skills_icon/python_icon.png" alt="Python Logo" class="skill-icon">
+                    <p>Python</p>
+                </div>
+                <!-- Skill Card 5 -->
+                <div class="skill">
+                    <img src="./assest/images/skills_icon/django_icon.png" alt="Django Logo" class="skill-icon">
+                    <p>Django</p>
+                </div>
+                <!-- Skill Card 6 -->
+                <div class="skill">
+                    <img src="./assest/images/skills_icon/react_icon.png" alt="React Logo" class="skill-icon">
+                    <p>React</p>
+                </div>
+                <!-- Skill Card 7 -->
+                <div class="skill">
+                    <img src="./assest/images/skills_icon/git_icon.png" alt="Git Logo" class="git-icon">
+                    <p>Git</p>
+                </div>
+                <!-- Skill Card 8 -->
+                <div class="skill">
+                    <img src="assest/images/skills_icon/bootstrap.png" alt="Bootstrap Logo" class="skill-icon">
+                    <p>Bootstrap</p>
+                </div>
+                <!-- Add or remove skill cards here only — the script below duplicates this list automatically for a seamless loop -->
             </div>
         </div>
     </section>
+
+    <script>
+        // Auto-duplicates the skills track once, so the marquee can loop seamlessly
+        // without needing a manually maintained second copy in the HTML.
+        (function () {
+            const track = document.getElementById('skillsTrack');
+            if (!track) return;
+            const originalCards = Array.from(track.children);
+            originalCards.forEach((card) => {
+                const clone = card.cloneNode(true);
+                clone.setAttribute('aria-hidden', 'true');
+                track.appendChild(clone);
+            });
+        })();
+    </script>
     <!-- Education Section  -->
     <hr>
     <section class="education" id="edu">
