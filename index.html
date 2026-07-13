@@ -3,324 +3,346 @@
 
 <head>
     <meta charset="UTF-8">
+    <script>
+        (function () {
+            const saved = localStorage.getItem("aj-theme");
+            const theme = saved || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+            document.documentElement.setAttribute("data-theme", theme);
+        })();
+    </script>
     <link rel="shortcut icon" type="x-icon" href="./assest/images/logo.jpeg">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="AJ Srabon — Full Stack Developer specializing in Python, Django, and React. Building responsive web applications from database to browser.">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/media.css">
-    <title>AJ's Portfolio</title>
+    <title>AJ Srabon — Full Stack Developer</title>
 </head>
 
 <body>
+
+    <div class="grid-overlay" aria-hidden="true"></div>
+    <div class="ambient-glow" id="ambient-glow" aria-hidden="true">
+        <span class="blob blob-emerald"></span>
+        <span class="blob blob-teal"></span>
+    </div>
+
     <header>
-        <a href="#" class="logo"><img src="./assest/images/logoback.png" alt="Logo Image" class="logo-image">Srabon</a>
-        <div class="menu-icon" id="menu-icon"><i class="fas fa-bars"></i></div>
+        <a href="#" class="logo">
+            <img src="https://i.postimg.cc/d1KJ820Y/logoback.png" alt="AJ Srabon Logo" class="logo-img">
+            <span class="logo-text">Srabon</span>
+        </a>
 
         <nav id="nav-menu">
-            <a href="#" class="active">Home</a>
-            <a href="#about">About me</a>
-            <a href="#skill">Skills</a>
-            <a href="#edu">Education</a>
-            <a href="#projects">Projects</a>
-            <a href="#contact">Contact</a>
+            <a href="#" class="active"><span class="nav-index">01</span>Home</a>
+            <a href="#about"><span class="nav-index">02</span>About</a>
+            <a href="#skill"><span class="nav-index">03</span>Skills</a>
+            <a href="#edu"><span class="nav-index">04</span>Education</a>
+            <a href="#projects"><span class="nav-index">05</span>Projects</a>
+            <a href="#contact"><span class="nav-index">06</span>Contact</a>
         </nav>
-    </header>
-    <section class="home">
-        <div class="home-img">
-            <img src="./assest/images/aj.jpg" alt="">
-        </div>
-        <div class="home-content">
-            <h2>Hi, I'm <span>AJ Srabon</span></h2>
-            <h5 class="typing-text">I'm a <span class="web">Web Developer</span></h5>
-            <br>
-            <p>I'm a dedicated full stack web developer with expertise in creating dynamic and responsive web
-                applications.</p>
-            <hr>
-            <div class="social-icons">
-                <a href="https://www.facebook.com/ashrafuzzaman.srabon.5"><i class="fa-brands fa-facebook"></i></a>
-                <a href="https://github.com/ajsrabon99"><i class="fa-brands fa-github"></i></a>
-                <a href="https://www.instagram.com/ashrafuzzaman_srabon/"><i class="fa-brands fa-instagram"></i></a>
-                <a href="https://t.me/ajsrabon99"><i class="fa-brands fa-telegram"></i></a>
-            </div>
-            <button>
-                <a href="tel:+8801327206804" class="btn">Call me</a>
-                <div class="star-1">
-                    <svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" version="1.1"
-                        style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
-                        viewBox="0 0 784.11 815.53" xmlns:xlink="http://www.w3.org/1999/xlink">
-                        <defs></defs>
-                        <g id="Layer_x0020_1">
-                            <metadata id="CorelCorpID_0Corel-Layer"></metadata>
-                            <path class="fil0"
-                                d="M392.05 0c-20.9,210.08 -184.06,378.41 -392.05,407.78 207.96,29.37 371.12,197.68 392.05,407.74 20.93,-210.06 184.09,-378.37 392.05,-407.74 -207.98,-29.38 -371.16,-197.69 -392.06,-407.78z">
-                            </path>
-                        </g>
-                    </svg>
-                </div>
-                <div class="star-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" version="1.1"
-                        style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
-                        viewBox="0 0 784.11 815.53" xmlns:xlink="http://www.w3.org/1999/xlink">
-                        <defs></defs>
-                        <g id="Layer_x0020_1">
-                            <metadata id="CorelCorpID_0Corel-Layer"></metadata>
-                            <path class="fil0"
-                                d="M392.05 0c-20.9,210.08 -184.06,378.41 -392.05,407.78 207.96,29.37 371.12,197.68 392.05,407.74 20.93,-210.06 184.09,-378.37 392.05,-407.74 -207.98,-29.38 -371.16,-197.69 -392.06,-407.78z">
-                            </path>
-                        </g>
-                    </svg>
-                </div>
-                <div class="star-3">
-                    <svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" version="1.1"
-                        style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
-                        viewBox="0 0 784.11 815.53" xmlns:xlink="http://www.w3.org/1999/xlink">
-                        <defs></defs>
-                        <g id="Layer_x0020_1">
-                            <metadata id="CorelCorpID_0Corel-Layer"></metadata>
-                            <path class="fil0"
-                                d="M392.05 0c-20.9,210.08 -184.06,378.41 -392.05,407.78 207.96,29.37 371.12,197.68 392.05,407.74 20.93,-210.06 184.09,-378.37 392.05,-407.74 -207.98,-29.38 -371.16,-197.69 -392.06,-407.78z">
-                            </path>
-                        </g>
-                    </svg>
-                </div>
-                <div class="star-4">
-                    <svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" version="1.1"
-                        style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
-                        viewBox="0 0 784.11 815.53" xmlns:xlink="http://www.w3.org/1999/xlink">
-                        <defs></defs>
-                        <g id="Layer_x0020_1">
-                            <metadata id="CorelCorpID_0Corel-Layer"></metadata>
-                            <path class="fil0"
-                                d="M392.05 0c-20.9,210.08 -184.06,378.41 -392.05,407.78 207.96,29.37 371.12,197.68 392.05,407.74 20.93,-210.06 184.09,-378.37 392.05,-407.74 -207.98,-29.38 -371.16,-197.69 -392.06,-407.78z">
-                            </path>
-                        </g>
-                    </svg>
-                </div>
-                <div class="star-5">
-                    <svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" version="1.1"
-                        style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
-                        viewBox="0 0 784.11 815.53" xmlns:xlink="http://www.w3.org/1999/xlink">
-                        <defs></defs>
-                        <g id="Layer_x0020_1">
-                            <metadata id="CorelCorpID_0Corel-Layer"></metadata>
-                            <path class="fil0"
-                                d="M392.05 0c-20.9,210.08 -184.06,378.41 -392.05,407.78 207.96,29.37 371.12,197.68 392.05,407.74 20.93,-210.06 184.09,-378.37 392.05,-407.74 -207.98,-29.38 -371.16,-197.69 -392.06,-407.78z">
-                            </path>
-                        </g>
-                    </svg>
-                </div>
-                <div class="star-6">
-                    <svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" version="1.1"
-                        style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
-                        viewBox="0 0 784.11 815.53" xmlns:xlink="http://www.w3.org/1999/xlink">
-                        <defs></defs>
-                        <g id="Layer_x0020_1">
-                            <metadata id="CorelCorpID_0Corel-Layer"></metadata>
-                            <path class="fil0"
-                                d="M392.05 0c-20.9,210.08 -184.06,378.41 -392.05,407.78 207.96,29.37 371.12,197.68 392.05,407.74 20.93,-210.06 184.09,-378.37 392.05,-407.74 -207.98,-29.38 -371.16,-197.69 -392.06,-407.78z">
-                            </path>
-                        </g>
-                    </svg>
-                </div>
-            </button>
 
+        <div class="header-controls">
+            <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+                <i class="fa-solid fa-moon"></i>
+                <i class="fa-solid fa-sun"></i>
+            </button>
+            <div class="menu-icon" id="menu-icon"><i class="fas fa-bars"></i></div>
+        </div>
+    </header>
+
+    <!-- Home / Hero -->
+    <section class="home" id="hero-section">
+        <div class="cursor-glow" id="cursor-glow" aria-hidden="true"></div>
+        <div class="home-content">
+            <p class="eyebrow"><span class="status-dot"></span><span id="greeting">Available for work</span> — Dhaka, BD
+            </p>
+            <h1>Hi, I'm <span class="accent">AJ Srabon</span></h1>
+            <h2 class="typing-line">I build <span class="typing-text"><span class="web">web applications</span></span>
+            </h2>
+            <p class="lede">
+                Full stack developer specializing in Python, Django and React —
+                I design and ship responsive, dependable web applications from
+                database to browser.
+            </p>
+
+            <div class="hero-actions">
+                <a href="tel:+8801327206804" class="btn btn-primary">
+                    <i class="fa-solid fa-phone"></i> Call me
+                </a>
+                <div class="social-icons">
+                    <a href="https://www.facebook.com/ashrafuzzaman.srabon.5" aria-label="Facebook"><i
+                            class="fa-brands fa-facebook"></i></a>
+                    <a href="https://github.com/ajsrabon99" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+                    <a href="https://www.instagram.com/ashrafuzzaman_srabon/" aria-label="Instagram"><i
+                            class="fa-brands fa-instagram"></i></a>
+                    <a href="https://t.me/ajsrabon99" aria-label="Telegram"><i class="fa-brands fa-telegram"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="home-img">
+            <div class="corner-frame">
+                <span class="corner tl"></span><span class="corner tr"></span>
+                <span class="corner bl"></span><span class="corner br"></span>
+                <span class="spec-label">FIG.01 — PORTRAIT</span>
+                <img src="./assest/images/aj.jpg" alt="Portrait of AJ Srabon">
+            </div>
         </div>
     </section>
-    <!-- About Section  -->
+
+    <!-- About Section -->
     <section class="about" id="about">
-        <h1>About me</h1>
+        <p class="section-index">N°02</p>
+        <h2 class="section-title">About me</h2>
         <div class="row">
             <div class="image">
-                <img src="./assest/images/aboutimage.jpg" alt="AJ Srabon" />
+                <div class="corner-frame">
+                    <span class="corner tl"></span><span class="corner tr"></span>
+                    <span class="corner bl"></span><span class="corner br"></span>
+                    <img src="./assest/images/aboutimage.jpg" alt="AJ Srabon" />
+                </div>
             </div>
             <div class="content">
-                <h3>I'm <span>AJ Srabon</span></h3>
+                <h3>I'm <span class="accent">AJ Srabon</span></h3>
                 <p class="tag">Full Stack Web Developer</p>
                 <p>
-                    I'm passionate about creating dynamic and interactive websites. With expertise in front-end and
-                    back-end technologies, I specialize in building responsive web applications that provide seamless
-                    user experiences. My journey in coding began with a deep curiosity and has turned into a dedicated
-                    career. I'm constantly learning and exploring new tools to enhance my skills.
+                    I'm passionate about creating dynamic and interactive websites. With expertise in
+                    front-end and back-end technologies, I specialize in building responsive web applications
+                    that provide seamless user experiences. My journey in coding began with a deep curiosity
+                    and has turned into a dedicated career. I'm constantly learning and exploring new tools
+                    to enhance my skills.
                 </p>
                 <div class="box-container">
-                    <div class="box">
-                        <p>Specialized in <span>Front-end & Back-end</span></p>
+                    <div class="spec-box">
+                        <span class="spec-key">Specialization</span>
+                        <span class="spec-value">Front-end &amp; Back-end</span>
                     </div>
                 </div>
-                <br>
-                <!-- Resume Button -->
+
                 <div class="resume-container">
-                    <button class="resume_btn" id="resumeBtn" onclick="showOptions()">Resume</button>
+                    <button class="btn btn-outline" id="resumeBtn" onclick="showOptions()">
+                        Resume <i class="fa-solid fa-chevron-down"></i>
+                    </button>
                     <div class="resume-options" id="resumeOptions">
                         <button class="option_btn"><a href="assest/resume/resume.png" target="_blank">View</a></button>
                         <button class="option_btn"><a href="assest/resume/resume.pdf" download>Download</a></button>
-                        <button class="close_btn" onclick="hideOptions()">×</button>
+                        <button class="close_btn" onclick="hideOptions()" aria-label="Close">×</button>
                     </div>
                 </div>
-
             </div>
         </div>
     </section>
+
     <!-- Skill Section -->
     <section class="skills" id="skill">
-        <h2>Skills</h2>
-        <div class="skills-marquee">
+        <p class="section-index">N°03</p>
+        <h2 class="section-title">Skills</h2>
+        <p class="section-sub">Tools and languages I use to build products end to end.</p>
+
+        <div class="skills-marquee" id="skillsMarquee">
             <div class="skills-track" id="skillsTrack">
-                <!-- Skill Card 1 -->
+                <!-- First Set -->
                 <div class="skill">
-                    <img src="./assest/images/skills_icon/HTML_icon.png" alt="HTML Logo" class="skill-icon">
-                    <p>HTML</p>
+                    <img src="./assest/images/skills_icon/HTML_icon.png" alt="HTML">
+                    <span>HTML</span>
                 </div>
-                <!-- Skill Card 2 -->
                 <div class="skill">
-                    <img src="./assest/images/skills_icon/CSS_icon.png" alt="CSS Logo" class="skill-icon">
-                    <p>CSS</p>
+                    <img src="./assest/images/skills_icon/CSS_icon.png" alt="CSS">
+                    <span>CSS</span>
                 </div>
-                <!-- Skill Card 3 -->
                 <div class="skill">
-                    <img src="./assest/images/skills_icon/js_icon.png" alt="JavaScript Logo" class="js-icon">
-                    <p>JavaScript</p>
+                    <img src="./assest/images/skills_icon/js_icon.png" alt="JavaScript">
+                    <span>JavaScript</span>
                 </div>
-                <!-- Skill Card 4 -->
                 <div class="skill">
-                    <img src="./assest/images/skills_icon/python_icon.png" alt="Python Logo" class="skill-icon">
-                    <p>Python</p>
+                    <img src="./assest/images/skills_icon/python_icon.png" alt="Python">
+                    <span>Python</span>
                 </div>
-                <!-- Skill Card 5 -->
                 <div class="skill">
-                    <img src="./assest/images/skills_icon/django_icon.png" alt="Django Logo" class="skill-icon">
-                    <p>Django</p>
+                    <img src="./assest/images/skills_icon/django_icon.png" alt="Django">
+                    <span>Django</span>
                 </div>
-                <!-- Skill Card 6 -->
                 <div class="skill">
-                    <img src="./assest/images/skills_icon/react_icon.png" alt="React Logo" class="skill-icon">
-                    <p>React</p>
+                    <img src="./assest/images/skills_icon/react_icon.png" alt="React">
+                    <span>React</span>
                 </div>
-                <!-- Skill Card 7 -->
                 <div class="skill">
-                    <img src="./assest/images/skills_icon/git_icon.png" alt="Git Logo" class="git-icon">
-                    <p>Git</p>
+                    <img src="./assest/images/skills_icon/git_icon.png" alt="Git">
+                    <span>Git</span>
                 </div>
-                <!-- Skill Card 8 -->
                 <div class="skill">
-                    <img src="assest/images/skills_icon/bootstrap.png" alt="Bootstrap Logo" class="skill-icon">
-                    <p>Bootstrap</p>
+                    <img src="./assest/images/skills_icon/bootstrap.png" alt="Bootstrap">
+                    <span>Bootstrap</span>
                 </div>
-                <!-- Add or remove skill cards here only — the script below duplicates this list automatically for a seamless loop -->
+                <!-- Second Set (Duplicate for infinite scroll) -->
+                <div class="skill">
+                    <img src="./assest/images/skills_icon/HTML_icon.png" alt="HTML">
+                    <span>HTML</span>
+                </div>
+                <div class="skill">
+                    <img src="./assest/images/skills_icon/CSS_icon.png" alt="CSS">
+                    <span>CSS</span>
+                </div>
+                <div class="skill">
+                    <img src="./assest/images/skills_icon/js_icon.png" alt="JavaScript">
+                    <span>JavaScript</span>
+                </div>
+                <div class="skill">
+                    <img src="./assest/images/skills_icon/python_icon.png" alt="Python">
+                    <span>Python</span>
+                </div>
+                <div class="skill">
+                    <img src="./assest/images/skills_icon/django_icon.png" alt="Django">
+                    <span>Django</span>
+                </div>
+                <div class="skill">
+                    <img src="./assest/images/skills_icon/react_icon.png" alt="React">
+                    <span>React</span>
+                </div>
+                <div class="skill">
+                    <img src="./assest/images/skills_icon/git_icon.png" alt="Git">
+                    <span>Git</span>
+                </div>
+                <div class="skill">
+                    <img src="./assest/images/skills_icon/bootstrap.png" alt="Bootstrap">
+                    <span>Bootstrap</span>
+                </div>
             </div>
         </div>
     </section>
 
-    <script>
-        // Auto-duplicates the skills track once, so the marquee can loop seamlessly
-        // without needing a manually maintained second copy in the HTML.
-        (function () {
-            const track = document.getElementById('skillsTrack');
-            if (!track) return;
-            const originalCards = Array.from(track.children);
-            originalCards.forEach((card) => {
-                const clone = card.cloneNode(true);
-                clone.setAttribute('aria-hidden', 'true');
-                track.appendChild(clone);
-            });
-        })();
-    </script>
-    <!-- Education Section  -->
-    <hr>
+    <!-- Education Section -->
     <section class="education" id="edu">
-        <h2>Education</h2>
+        <p class="section-index">N°04</p>
+        <h2 class="section-title">Education</h2>
         <div class="education-container">
             <div class="education-item">
+                <span class="spec-label">2022 — 2026</span>
                 <img src="./assest/images/dpi_img.png" alt="Dhaka Polytechnic Institute Logo" class="edu-logo1">
                 <h3>Diploma in Computer Science</h3>
-                <p>Dhaka Polytechnic Institute</p>
-                <span>2022 - 2026</span>
-                <p>Gained comprehensive knowledge in computer science fundamentals, web development, and software
-                    engineering.</p>
+                <p class="tag">Dhaka Polytechnic Institute</p>
+                <p>Gained comprehensive knowledge in computer science fundamentals, web development,
+                    and software engineering.</p>
             </div>
             <div class="education-item">
+                <span class="spec-label">2024</span>
                 <img src="./assest/images/ostad_image.png" alt="Ostad Logo" class="edu-logo2">
-                <h3>Full Stack Web development</h3>
-                <p>Ostad</p>
-                <span>2024</span>
-                <p>I completed a Full Stack Web Development course from Ostad, focusing on Python, Django, and React to
-                    build dynamic applications.</p>
+                <h3>Full Stack Web Development</h3>
+                <p class="tag">Ostad</p>
+                <p>Completed a full stack web development course focused on Python, Django, and React
+                    to build dynamic applications.</p>
             </div>
         </div>
     </section>
-    <!-- Project Section  -->
+
+    <!-- Project Section -->
     <section class="projects" id="projects">
-        <h2>Projects</h2>
+        <p class="section-index">N°05</p>
+        <h2 class="section-title">Projects</h2>
         <div class="projects-container">
             <div class="project-item">
-                <img src="./assest/images/project1.jpg" alt="Project 1">
+                <div class="corner-frame">
+                    <span class="corner tl"></span><span class="corner tr"></span>
+                    <span class="corner bl"></span><span class="corner br"></span>
+                    <img src="./assest/images/project1.jpg" alt="Project 1">
+                </div>
                 <div class="project-info">
+                    <span class="spec-label">REF-01</span>
                     <h3>Project One</h3>
-                    <p>A Simple Calculator using Python</p>
-                    <a href="https://github.com/ajsrabon99/simple_calculator" class="btn">View Project</a>
+                    <p>A simple calculator built with Python.</p>
+                    <a href="https://github.com/ajsrabon99/simple_calculator" class="link-arrow">View project <i
+                            class="fa-solid fa-arrow-right"></i></a>
                 </div>
             </div>
             <div class="project-item">
-                <img src="./assest/images/project2.jpg" alt="Project 2">
+                <div class="corner-frame">
+                    <span class="corner tl"></span><span class="corner tr"></span>
+                    <span class="corner bl"></span><span class="corner br"></span>
+                    <img src="./assest/images/project2.jpg" alt="Project 2">
+                </div>
                 <div class="project-info">
+                    <span class="spec-label">REF-02</span>
                     <h3>Project Two</h3>
-                    <p>I create a Tic Tac Toe Games Using Python</p>
-                    <a href="https://github.com/ajsrabon99/tic-tac-game" class="btn">View Project</a>
+                    <p>A Tic Tac Toe game built with Python.</p>
+                    <a href="https://github.com/ajsrabon99/tic-tac-game" class="link-arrow">View project <i
+                            class="fa-solid fa-arrow-right"></i></a>
                 </div>
             </div>
             <div class="project-item">
-                <img src="./assest/images/project3.jpeg" alt="Project 3">
+                <div class="corner-frame">
+                    <span class="corner tl"></span><span class="corner tr"></span>
+                    <span class="corner bl"></span><span class="corner br"></span>
+                    <img src="./assest/images/project3.jpeg" alt="Project 3">
+                </div>
                 <div class="project-info">
+                    <span class="spec-label">REF-03</span>
                     <h3>Project Three</h3>
-                    <p>A School Management System using SQL database</p>
-                    <a href="https://github.com/ajsrabon99/school_management" class="btn">View Project</a>
+                    <p>A school management system backed by an SQL database.</p>
+                    <a href="https://github.com/ajsrabon99/school_management" class="link-arrow">View project <i
+                            class="fa-solid fa-arrow-right"></i></a>
                 </div>
             </div>
         </div>
-        <br>
-        <br>
+
         <div class="see-more-container">
-            <button class="see-more" id="see-more-btn" onclick="redirectToLoader()">See More Projects</button>
+            <button class="btn btn-outline" id="see-more-btn" onclick="redirectToLoader()">See more projects</button>
         </div>
 
         <script>
             function redirectToLoader() {
-                // Redirect to loader page
                 window.location.href = "loader.html";
             }
         </script>
     </section>
-    <!-- contact section  -->
+
+    <!-- Contact section -->
     <section class="contact" id="contact">
-        <h2>Contact Me</h2>
-        <p>If you'd like to get in touch, feel free to reach out through any of the social links or drop a message here!
-        </p>
+        <p class="section-index">N°06</p>
+        <h2 class="section-title">Contact me</h2>
+        <p class="section-sub">Have a project in mind or just want to say hi? Send a message below.</p>
+
         <form action="https://api.web3forms.com/submit" method="POST">
             <input type="hidden" name="access_key" value="05d96b24-bb12-4a16-a541-b6a27cdce6bb">
-            <input type="text" name="Name" placeholder="Your Name" required>
-            <input type="email" name="Email" placeholder="Your Email" required>
-            <textarea name="message" rows="7" placeholder="Your Message"></textarea>
-            <input type="submit" value="Submit" id="submit">
+            <div class="form-row">
+                <input type="text" name="Name" placeholder="Your name" required>
+                <input type="email" name="Email" placeholder="Your email" required>
+            </div>
+            <textarea name="message" rows="6" placeholder="Your message"></textarea>
+            <input type="submit" value="Send message" id="submit" class="btn btn-primary">
         </form>
     </section>
-    <!-- footer  -->
+
+    <!-- footer -->
     <footer>
         <div class="footer-content">
-            <h3>Ashrafuzzaman</h3>
-            <p>Thank you for visiting my portfolio. Connect with me on social media or send me a message if you’d like
-                to collaborate or just say hi!</p>
+            <div class="footer-brand">
+                <span class="logo-mark small">AJ</span>
+                <h3>Ashrafuzzaman Srabon</h3>
+            </div>
+            <p>Thanks for visiting. Connect with me on social media or send a message
+                if you'd like to collaborate.</p>
             <div class="footer-social-icons">
-                <a href="https://www.facebook.com/ashrafuzzaman.srabon.5"><i class="fa-brands fa-facebook"></i></a>
-                <a href="https://github.com/ajsrabon99"><i class="fa-brands fa-github"></i></a>
-                <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
-                <a href="https://www.instagram.com/ashrafuzzaman_srabon/"><i class="fa-brands fa-instagram"></i></a>
-                <a href="https://t.me/ajsrabon99"><i class="fa-brands fa-telegram"></i></a>
+                <a href="https://www.facebook.com/ashrafuzzaman.srabon.5" aria-label="Facebook"><i
+                        class="fa-brands fa-facebook"></i></a>
+                <a href="https://github.com/ajsrabon99" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+                <a href="#" aria-label="X"><i class="fa-brands fa-x-twitter"></i></a>
+                <a href="https://www.instagram.com/ashrafuzzaman_srabon/" aria-label="Instagram"><i
+                        class="fa-brands fa-instagram"></i></a>
+                <a href="https://t.me/ajsrabon99" aria-label="Telegram"><i class="fa-brands fa-telegram"></i></a>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2025 AJ Srabon. All rights reserved.</p>
+            <p>&copy; 2026 AJ Srabon. All rights reserved.</p>
         </div>
     </footer>
+
     <script src="script.js"></script>
 </body>
 
