@@ -277,14 +277,10 @@ document.addEventListener("DOMContentLoaded", () => {
     // PROFILE INTRO VIDEO
     // ==========================================================
 
-    const video = document.querySelector(".profile-video");
-    const image = document.querySelector(".profile-img.normal");
+    const video = document.querySelector(".hero-profile-video");
+    const image = document.querySelector(".hero-profile-img");
 
     if (video && image) {
-
-        image.style.opacity = "0";
-
-        video.play().catch(() => { });
 
         video.addEventListener("ended", () => {
 
