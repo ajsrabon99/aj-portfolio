@@ -3,8 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Loading - AJ Srabon</title>
+    <meta name="description" content="Loading - AJ Srabon Portfolio">
+    <title>Loading | AJ Srabon</title>
+    <link rel="shortcut icon" type="x-icon" href="./assest/images/logo.jpeg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        /* ==========================================================
+           CSS Variables & Theme
+           ========================================================== */
+        :root {
+            --bg-primary: #080c0a;
+            --bg-card: #111a15;
+            --text-primary: #e8f0ec;
+            --text-secondary: #8aa89a;
+            --accent-emerald: #34d399;
+            --accent-emerald-light: #6ee7b7;
+            --accent-teal: #2dd4bf;
+            --accent-gradient: linear-gradient(135deg, #34d399, #2dd4bf);
+            --border-subtle: rgba(52, 211, 153, 0.08);
+            
+            --font-display: 'Space Grotesk', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        /* ==========================================================
+           Base Styles
+           ========================================================== */
         * {
             margin: 0;
             padding: 0;
@@ -16,67 +43,81 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+            background: var(--bg-primary);
             overflow: hidden;
-            font-family: 'Arial', sans-serif;
+            font-family: var(--font-body);
+            position: relative;
         }
 
+        /* ==========================================================
+           Background Effects
+           ========================================================== */
+        .grid-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            pointer-events: none;
+            background-image: 
+                radial-gradient(circle at 20% 50%, rgba(52, 211, 153, 0.04) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(45, 212, 191, 0.03) 0%, transparent 40%);
+            opacity: 0.6;
+        }
+
+        .ambient-glow {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(120px);
+            opacity: 0.12;
+            animation: floatBlob 30s ease-in-out infinite;
+        }
+
+        .blob-emerald {
+            width: 60vw;
+            height: 60vw;
+            top: -30%;
+            left: -20%;
+            background: var(--accent-emerald);
+        }
+
+        .blob-teal {
+            width: 50vw;
+            height: 50vw;
+            bottom: -25%;
+            right: -15%;
+            background: var(--accent-teal);
+            animation-delay: 5s;
+            animation-direction: reverse;
+        }
+
+        @keyframes floatBlob {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(5%, -5%) scale(1.1); }
+            66% { transform: translate(-3%, 8%) scale(0.9); }
+        }
+
+        /* ==========================================================
+           Loader Container
+           ========================================================== */
         .loader-container {
             position: relative;
             display: flex;
             flex-direction: column;
             align-items: center;
             gap: 2rem;
+            z-index: 1;
         }
 
-        /* Animated background circles */
-        .bg-circle {
-            position: absolute;
-            border-radius: 50%;
-            opacity: 0.1;
-            animation: float 20s ease-in-out infinite;
-        }
-
-        .bg-circle:nth-child(1) {
-            width: 300px;
-            height: 300px;
-            background: radial-gradient(circle, #ff6b35 0%, transparent 70%);
-            top: -150px;
-            left: -150px;
-            animation-delay: 0s;
-        }
-
-        .bg-circle:nth-child(2) {
-            width: 400px;
-            height: 400px;
-            background: radial-gradient(circle, #2563eb 0%, transparent 70%);
-            bottom: -200px;
-            right: -200px;
-            animation-delay: 5s;
-        }
-
-        .bg-circle:nth-child(3) {
-            width: 250px;
-            height: 250px;
-            background: radial-gradient(circle, #ff6b35 0%, transparent 70%);
-            top: 50%;
-            right: -125px;
-            animation-delay: 10s;
-        }
-
-        @keyframes float {
-            0%, 100% {
-                transform: translate(0, 0) scale(1);
-            }
-            33% {
-                transform: translate(50px, -50px) scale(1.1);
-            }
-            66% {
-                transform: translate(-50px, 50px) scale(0.9);
-            }
-        }
-
-        /* Logo container with pulse effect */
+        /* ==========================================================
+           Logo Wrapper - WITH ROLLING CIRCLES
+           ========================================================== */
         .logo-wrapper {
             position: relative;
             width: 300px;
@@ -84,167 +125,297 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            z-index: 10;
         }
 
-        /* Rotating circles around logo */
-        .circle-orbit {
+        /* Glow effect behind logo */
+        .glow-ring {
             position: absolute;
             width: 100%;
             height: 100%;
-            border: 3px solid transparent;
             border-radius: 50%;
-            animation: rotate 3s linear infinite;
+            background: radial-gradient(circle, rgba(52, 211, 153, 0.12) 0%, transparent 70%);
+            animation: glowPulse 2.5s ease-in-out infinite;
         }
 
-        .circle-orbit:nth-child(1) {
-            border-top-color: #ff6b35;
-            border-right-color: #ff6b35;
-            animation-duration: 2s;
+        @keyframes glowPulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.15); opacity: 0.8; }
         }
 
-        .circle-orbit:nth-child(2) {
-            border-bottom-color: #2563eb;
-            border-left-color: #2563eb;
-            animation-duration: 3s;
-            animation-direction: reverse;
+        /* ==========================================================
+           ROLLING CIRCLES - ORBITING AROUND LOGO
+           ========================================================== */
+        
+        /* Orbit path - the circular track */
+        .orbit {
+            position: absolute;
+            border-radius: 50%;
+            border: 1.5px solid rgba(52, 211, 153, 0.08);
+            pointer-events: none;
         }
 
-        .circle-orbit:nth-child(3) {
-            width: 85%;
-            height: 85%;
-            border-top-color: #ff6b35;
-            opacity: 0.5;
-            animation-duration: 2.5s;
+        /* Orbit 1 - Outer orbit */
+        .orbit-1 {
+            width: 100%;
+            height: 100%;
         }
 
-        @keyframes rotate {
+        /* Orbit 2 - Middle orbit */
+        .orbit-2 {
+            width: 80%;
+            height: 80%;
+        }
+
+        /* Orbit 3 - Inner orbit */
+        .orbit-3 {
+            width: 60%;
+            height: 60%;
+        }
+
+        /* ==========================================================
+           ROLLING CIRCLES
+           ========================================================== */
+        .rolling-circle {
+            position: absolute;
+            border-radius: 50%;
+            pointer-events: none;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+        }
+
+        /* Circle 1 - Large, Emerald */
+        .circle-1 {
+            width: 20px;
+            height: 20px;
+            background: var(--accent-emerald);
+            box-shadow: 0 0 20px rgba(52, 211, 153, 0.5);
+            top: -10px;
+            left: 50%;
+            margin-left: -10px;
+            animation: orbitRoll1 4s linear infinite;
+        }
+
+        /* Circle 2 - Medium, Teal */
+        .circle-2 {
+            width: 16px;
+            height: 16px;
+            background: var(--accent-teal);
+            box-shadow: 0 0 20px rgba(45, 212, 191, 0.5);
+            top: -8px;
+            left: 50%;
+            margin-left: -8px;
+            animation: orbitRoll2 5.5s linear infinite;
+            animation-delay: 0.5s;
+        }
+
+        /* Circle 3 - Small, Emerald Light */
+        .circle-3 {
+            width: 12px;
+            height: 12px;
+            background: var(--accent-emerald-light);
+            box-shadow: 0 0 20px rgba(110, 231, 183, 0.5);
+            top: -6px;
+            left: 50%;
+            margin-left: -6px;
+            animation: orbitRoll3 7s linear infinite;
+            animation-delay: 1s;
+        }
+
+        /* Circle 4 - Tiny, White with glow */
+        .circle-4 {
+            width: 8px;
+            height: 8px;
+            background: #ffffff;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+            top: -4px;
+            left: 50%;
+            margin-left: -4px;
+            animation: orbitRoll1 3s linear infinite;
+            animation-delay: 0.3s;
+        }
+
+        /* Circle 5 - Medium, Emerald Dark */
+        .circle-5 {
+            width: 14px;
+            height: 14px;
+            background: #10b981;
+            box-shadow: 0 0 20px rgba(16, 185, 129, 0.5);
+            top: -7px;
+            left: 50%;
+            margin-left: -7px;
+            animation: orbitRoll2 4.8s linear infinite;
+            animation-delay: 1.5s;
+        }
+
+        /* Circle 6 - Small, Teal Light */
+        .circle-6 {
+            width: 10px;
+            height: 10px;
+            background: #5eead4;
+            box-shadow: 0 0 20px rgba(94, 234, 212, 0.5);
+            top: -5px;
+            left: 50%;
+            margin-left: -5px;
+            animation: orbitRoll3 6.2s linear infinite;
+            animation-delay: 0.8s;
+        }
+
+        /* ==========================================================
+           ORBIT ANIMATIONS - Different sizes & speeds
+           ========================================================== */
+        
+        /* Orbit 1 - Full size (100%) */
+        @keyframes orbitRoll1 {
             0% {
-                transform: rotate(0deg);
+                transform: rotate(0deg) translateX(150px) rotate(0deg);
             }
             100% {
-                transform: rotate(360deg);
+                transform: rotate(360deg) translateX(150px) rotate(-360deg);
             }
         }
 
-        /* Logo with pulse animation */
-        .logo {
-            width: 200px;
-            height: 200px;
-            object-fit: contain;
-            animation: pulse 2s ease-in-out infinite;
-            filter: drop-shadow(0 0 30px rgba(255, 107, 53, 0.5));
-            position: relative;
-            z-index: 5;
+        /* Orbit 2 - 80% size */
+        @keyframes orbitRoll2 {
+            0% {
+                transform: rotate(0deg) translateX(120px) rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg) translateX(120px) rotate(-360deg);
+            }
         }
 
-        @keyframes pulse {
+        /* Orbit 3 - 60% size */
+        @keyframes orbitRoll3 {
+            0% {
+                transform: rotate(0deg) translateX(90px) rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg) translateX(90px) rotate(-360deg);
+            }
+        }
+
+        /* Logo image */
+        .logo {
+            width: 170px;
+            height: 170px;
+            object-fit: contain;
+            position: relative;
+            z-index: 2;
+            animation: logoPulse 2s ease-in-out infinite;
+            filter: drop-shadow(0 0 30px rgba(52, 211, 153, 0.2));
+        }
+
+        @keyframes logoPulse {
             0%, 100% {
                 transform: scale(1);
-                filter: drop-shadow(0 0 30px rgba(255, 107, 53, 0.5));
+                filter: drop-shadow(0 0 30px rgba(52, 211, 153, 0.2));
             }
             50% {
-                transform: scale(1.05);
-                filter: drop-shadow(0 0 50px rgba(255, 107, 53, 0.8));
+                transform: scale(1.04);
+                filter: drop-shadow(0 0 50px rgba(52, 211, 153, 0.35));
             }
         }
 
-        /* Loading text */
+        /* ==========================================================
+           Loading Text
+           ========================================================== */
         .loading-text {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: #fff;
-            letter-spacing: 3px;
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            letter-spacing: 4px;
             text-transform: uppercase;
-            position: relative;
-            z-index: 10;
         }
 
-        .loading-text::after {
+        .loading-text .dots {
+            display: inline-block;
+            width: 40px;
+            text-align: left;
+        }
+
+        .loading-text .dots::after {
             content: '';
-            animation: dots 1.5s steps(4, end) infinite;
+            animation: dotAnimation 1.5s steps(4, end) infinite;
         }
 
-        @keyframes dots {
-            0%, 20% {
-                content: '';
-            }
-            40% {
-                content: '.';
-            }
-            60% {
-                content: '..';
-            }
-            80%, 100% {
-                content: '...';
-            }
+        @keyframes dotAnimation {
+            0%, 20% { content: ''; }
+            40% { content: '.'; }
+            60% { content: '..'; }
+            80%, 100% { content: '...'; }
         }
 
-        /* Progress bar */
+        /* ==========================================================
+           Progress Bar
+           ========================================================== */
         .progress-container {
-            width: 300px;
-            height: 6px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
+            width: 280px;
+            height: 4px;
+            background: var(--bg-card);
+            border-radius: 4px;
             overflow: hidden;
-            position: relative;
-            z-index: 10;
+            border: 1px solid var(--border-subtle);
         }
 
         .progress-bar {
             height: 100%;
-            background: linear-gradient(90deg, #ff6b35, #2563eb, #ff6b35);
-            background-size: 200% 100%;
-            border-radius: 10px;
-            animation: progress 3s ease-in-out infinite, gradient 2s linear infinite;
-            box-shadow: 0 0 20px rgba(255, 107, 53, 0.5);
+            background: var(--accent-gradient);
+            border-radius: 4px;
+            width: 0%;
+            transition: width 0.15s ease;
+            box-shadow: 0 0 20px rgba(52, 211, 153, 0.3);
+            position: relative;
         }
 
-        @keyframes progress {
-            0% {
-                width: 0%;
-            }
-            50% {
-                width: 70%;
-            }
-            100% {
-                width: 100%;
-            }
-        }
-
-        @keyframes gradient {
-            0% {
-                background-position: 0% 50%;
-            }
-            100% {
-                background-position: 200% 50%;
-            }
-        }
-
-        /* Percentage text */
-        .percentage {
-            font-size: 1.2rem;
-            font-weight: 600;
-            color: #fff;
-            margin-top: 1rem;
-            letter-spacing: 2px;
-            opacity: 0.8;
-            z-index: 10;
-        }
-
-        /* Particles effect */
-        .particle {
+        .progress-bar::after {
+            content: '';
             position: absolute;
-            width: 4px;
-            height: 4px;
-            background: #ff6b35;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            animation: shimmer 1.5s ease-in-out infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        /* ==========================================================
+           Percentage
+           ========================================================== */
+        .percentage {
+            font-family: var(--font-mono);
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            letter-spacing: 2px;
+            margin-top: -8px;
+        }
+
+        .percentage span {
+            color: var(--accent-emerald);
+            font-weight: 600;
+        }
+
+        /* ==========================================================
+           Floating Particles
+           ========================================================== */
+        .particle {
+            position: fixed;
+            width: 3px;
+            height: 3px;
             border-radius: 50%;
             pointer-events: none;
             opacity: 0;
-            animation: particle-rise 3s ease-out infinite;
+            z-index: 0;
+            animation: particleRise 3s ease-out infinite;
         }
 
-        @keyframes particle-rise {
+        @keyframes particleRise {
             0% {
                 opacity: 0;
                 transform: translateY(0) scale(1);
@@ -253,140 +424,254 @@
                 opacity: 1;
             }
             90% {
-                opacity: 1;
+                opacity: 0.8;
             }
             100% {
                 opacity: 0;
-                transform: translateY(-200px) scale(0);
+                transform: translateY(-150px) scale(0);
             }
         }
 
-        /* Glowing effect */
-        .glow {
-            position: absolute;
-            width: 250px;
-            height: 250px;
-            background: radial-gradient(circle, rgba(255, 107, 53, 0.3) 0%, transparent 70%);
-            border-radius: 50%;
-            animation: glow-pulse 2s ease-in-out infinite;
-            z-index: 1;
-        }
-
-        @keyframes glow-pulse {
-            0%, 100% {
-                transform: scale(1);
-                opacity: 0.5;
-            }
-            50% {
-                transform: scale(1.2);
-                opacity: 0.8;
-            }
-        }
-
-        /* Responsive */
+        /* ==========================================================
+           Responsive
+           ========================================================== */
         @media (max-width: 768px) {
             .logo-wrapper {
-                width: 250px;
-                height: 250px;
+                width: 240px;
+                height: 240px;
             }
-
             .logo {
-                width: 160px;
-                height: 160px;
+                width: 130px;
+                height: 130px;
             }
-
             .loading-text {
-                font-size: 1.4rem;
+                font-size: 1.3rem;
+                letter-spacing: 3px;
             }
-
             .progress-container {
-                width: 250px;
+                width: 220px;
+            }
+            
+            @keyframes orbitRoll1 {
+                0% { transform: rotate(0deg) translateX(120px) rotate(0deg); }
+                100% { transform: rotate(360deg) translateX(120px) rotate(-360deg); }
+            }
+            @keyframes orbitRoll2 {
+                0% { transform: rotate(0deg) translateX(96px) rotate(0deg); }
+                100% { transform: rotate(360deg) translateX(96px) rotate(-360deg); }
+            }
+            @keyframes orbitRoll3 {
+                0% { transform: rotate(0deg) translateX(72px) rotate(0deg); }
+                100% { transform: rotate(360deg) translateX(72px) rotate(-360deg); }
+            }
+            
+            .circle-1 { width: 16px; height: 16px; margin-left: -8px; top: -8px; }
+            .circle-2 { width: 13px; height: 13px; margin-left: -6.5px; top: -6.5px; }
+            .circle-3 { width: 10px; height: 10px; margin-left: -5px; top: -5px; }
+            .circle-4 { width: 6px; height: 6px; margin-left: -3px; top: -3px; }
+            .circle-5 { width: 11px; height: 11px; margin-left: -5.5px; top: -5.5px; }
+            .circle-6 { width: 8px; height: 8px; margin-left: -4px; top: -4px; }
+        }
+
+        @media (max-width: 480px) {
+            .logo-wrapper {
+                width: 200px;
+                height: 200px;
+            }
+            .logo {
+                width: 100px;
+                height: 100px;
+            }
+            .loading-text {
+                font-size: 1.1rem;
+                letter-spacing: 2px;
+            }
+            .progress-container {
+                width: 180px;
+            }
+            .percentage {
+                font-size: 0.85rem;
+            }
+            
+            @keyframes orbitRoll1 {
+                0% { transform: rotate(0deg) translateX(100px) rotate(0deg); }
+                100% { transform: rotate(360deg) translateX(100px) rotate(-360deg); }
+            }
+            @keyframes orbitRoll2 {
+                0% { transform: rotate(0deg) translateX(80px) rotate(0deg); }
+                100% { transform: rotate(360deg) translateX(80px) rotate(-360deg); }
+            }
+            @keyframes orbitRoll3 {
+                0% { transform: rotate(0deg) translateX(60px) rotate(0deg); }
+                100% { transform: rotate(360deg) translateX(60px) rotate(-360deg); }
+            }
+            
+            .circle-1 { width: 14px; height: 14px; margin-left: -7px; top: -7px; }
+            .circle-2 { width: 11px; height: 11px; margin-left: -5.5px; top: -5.5px; }
+            .circle-3 { width: 8px; height: 8px; margin-left: -4px; top: -4px; }
+            .circle-4 { width: 5px; height: 5px; margin-left: -2.5px; top: -2.5px; }
+            .circle-5 { width: 9px; height: 9px; margin-left: -4.5px; top: -4.5px; }
+            .circle-6 { width: 7px; height: 7px; margin-left: -3.5px; top: -3.5px; }
+        }
+
+        /* ==========================================================
+           Reduced Motion
+           ========================================================== */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation: none !important;
+                transition: none !important;
+            }
+            .logo {
+                animation: none !important;
+            }
+            .particle {
+                display: none !important;
+            }
+            .rolling-circle {
+                display: none !important;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Background animated circles -->
-    <div class="bg-circle"></div>
-    <div class="bg-circle"></div>
-    <div class="bg-circle"></div>
 
+    <!-- Background Effects -->
+    <div class="grid-overlay" aria-hidden="true"></div>
+    <div class="ambient-glow" aria-hidden="true">
+        <span class="blob blob-emerald"></span>
+        <span class="blob blob-teal"></span>
+    </div>
+
+    <!-- Loader Container -->
     <div class="loader-container">
-        <!-- Logo with rotating circles -->
+        
+        <!-- Logo with rolling circles -->
         <div class="logo-wrapper">
-            <div class="glow"></div>
-            <div class="circle-orbit"></div>
-            <div class="circle-orbit"></div>
-            <div class="circle-orbit"></div>
+            <div class="glow-ring"></div>
+            
+            <!-- Orbit Paths (invisible tracks) -->
+            <div class="orbit orbit-1"></div>
+            <div class="orbit orbit-2"></div>
+            <div class="orbit orbit-3"></div>
+            
+            <!-- Rolling Circles on Orbit 1 (Outer) -->
+            <div class="rolling-circle circle-1"></div>
+            <div class="rolling-circle circle-4"></div>
+            
+            <!-- Rolling Circles on Orbit 2 (Middle) -->
+            <div class="rolling-circle circle-2"></div>
+            <div class="rolling-circle circle-5"></div>
+            
+            <!-- Rolling Circles on Orbit 3 (Inner) -->
+            <div class="rolling-circle circle-3"></div>
+            <div class="rolling-circle circle-6"></div>
+            
             <img src="./assest/images/logoback2.png" alt="AJ Srabon Logo" class="logo">
         </div>
 
-        <!-- Loading text -->
-        <div class="loading-text">Loading</div>
+        <!-- Loading Text -->
+        <div class="loading-text">
+            Loading<span class="dots"></span>
+        </div>
 
-        <!-- Progress bar -->
+        <!-- Progress Bar -->
         <div class="progress-container">
-            <div class="progress-bar"></div>
+            <div class="progress-bar" id="progressBar"></div>
         </div>
 
         <!-- Percentage -->
-        <div class="percentage" id="percentage">0%</div>
+        <div class="percentage">
+            <span id="percentage">0</span>% Complete
+        </div>
+
     </div>
 
     <script>
-        // Percentage counter
-        const percentageElement = document.getElementById('percentage');
-        let percentage = 0;
+        // ==========================================================
+        // Loader JavaScript
+        // ==========================================================
 
-        const percentageInterval = setInterval(() => {
-            if (percentage < 100) {
-                percentage += Math.floor(Math.random() * 10) + 1;
-                if (percentage > 100) percentage = 100;
-                percentageElement.textContent = percentage + '%';
-            } else {
-                clearInterval(percentageInterval);
-                // Redirect after loading complete (optional)
-                setTimeout(() => {
-                    window.location.href = 'all_project.html';
-                    // Or show content
-                    document.body.innerHTML = '<h1 style="color: white; text-align: center; margin-top: 50vh;">Loading Complete!</h1>';
-                }, 500);
+        document.addEventListener('DOMContentLoaded', () => {
+
+            const progressBar = document.getElementById('progressBar');
+            const percentageEl = document.getElementById('percentage');
+            let progress = 0;
+            let isComplete = false;
+
+            // Smooth progress update
+            function updateProgress() {
+                if (isComplete) return;
+
+                const increment = 0.5 + Math.random() * 2.5;
+                progress = Math.min(progress + increment, 100);
+                
+                progressBar.style.width = progress + '%';
+                percentageEl.textContent = Math.floor(progress);
+
+                if (progress < 100) {
+                    const delay = 20 + Math.random() * 60;
+                    setTimeout(updateProgress, delay);
+                } else {
+                    isComplete = true;
+                    percentageEl.textContent = '100';
+                    progressBar.style.boxShadow = '0 0 40px rgba(52, 211, 153, 0.6)';
+                    
+                    setTimeout(() => {
+                        window.location.href = 'all_project.html';
+                    }, 600);
+                }
             }
-        }, 100);
 
-        // Create floating particles
-        function createParticle() {
-            const particle = document.createElement('div');
-            particle.className = 'particle';
-            
-            // Random position around the logo
-            const angle = Math.random() * Math.PI * 2;
-            const distance = 100 + Math.random() * 50;
-            const x = Math.cos(angle) * distance;
-            const y = Math.sin(angle) * distance;
-            
-            particle.style.left = `calc(50% + ${x}px)`;
-            particle.style.top = `calc(50% + ${y}px)`;
-            particle.style.animationDelay = `${Math.random() * 2}s`;
-            
-            // Random color (orange or blue)
-            particle.style.background = Math.random() > 0.5 ? '#ff6b35' : '#2563eb';
-            
-            document.body.appendChild(particle);
-            
-            // Remove particle after animation
-            setTimeout(() => {
-                particle.remove();
-            }, 3000);
-        }
+            setTimeout(updateProgress, 300);
 
-        // Create particles continuously
-        setInterval(createParticle, 200);
+            // ==========================================================
+            // Floating Particles
+            // ==========================================================
+            function createParticle() {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                
+                const x = Math.random() * window.innerWidth;
+                const y = Math.random() * window.innerHeight;
+                
+                particle.style.left = x + 'px';
+                particle.style.top = y + 'px';
+                particle.style.animationDelay = (Math.random() * 2) + 's';
+                particle.style.animationDuration = (2 + Math.random() * 2) + 's';
+                
+                const size = 1 + Math.random() * 3;
+                particle.style.width = size + 'px';
+                particle.style.height = size + 'px';
+                
+                particle.style.background = Math.random() > 0.5 ? '#34d399' : '#2dd4bf';
+                particle.style.opacity = 0.3 + Math.random() * 0.4;
+                
+                document.body.appendChild(particle);
+                
+                setTimeout(() => {
+                    particle.remove();
+                }, 4000);
+            }
 
-        // Initial burst of particles
-        for (let i = 0; i < 10; i++) {
-            setTimeout(createParticle, i * 100);
-        }
+            // Initial burst
+            for (let i = 0; i < 15; i++) {
+                setTimeout(createParticle, i * 80);
+            }
+
+            // Continuous particles
+            const particleInterval = setInterval(createParticle, 150);
+
+            // Pause when tab is hidden
+            document.addEventListener('visibilitychange', () => {
+                if (document.hidden) {
+                    clearInterval(particleInterval);
+                } else {
+                    setInterval(createParticle, 150);
+                }
+            });
+
+        });
     </script>
 </body>
 </html>

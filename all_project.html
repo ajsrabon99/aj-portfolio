@@ -4,646 +4,791 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Projects | AJ Srabon</title>
+    <meta name="description"
+        content="Explore all projects by AJ Srabon - Full Stack Developer showcasing web development, Python, Django, and React applications.">
+    <title>All Projects | AJ Srabon — Full Stack Developer</title>
+    <link rel="shortcut icon" type="x-icon" href="./assest/images/logo.jpeg">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
     <style>
-        /* Modern CSS Reset & Variables */
+        /* ==========================================================
+           CSS Variables & Theme
+           ========================================================== */
         :root {
-            --primary-color: #6c63ff;
-            --secondary-color: #4a44c6;
-            --accent-color: #ff6584;
-            --dark-color: #0a043c;
-            --dark-blue: #1a1a2e;
-            --light-color: #ffffff;
-            --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            --gradient-secondary: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            --gradient-dark: linear-gradient(135deg, #0a043c 0%, #16213e 100%);
-            --shadow-sm: 0 4px 6px rgba(0, 0, 0, 0.1);
-            --shadow-md: 0 10px 20px rgba(0, 0, 0, 0.15);
-            --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.25);
-            --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            --border-radius: 16px;
-            --glass-bg: rgba(255, 255, 255, 0.05);
-            --glass-border: rgba(255, 255, 255, 0.1);
+            /* Dark Theme - Emerald Color Scheme */
+            --bg-primary: #080c0a;
+            --bg-secondary: #0d1410;
+            --bg-card: #111a15;
+            --bg-elevated: #18221b;
+            --bg-input: #111a15;
+
+            --text-primary: #e8f0ec;
+            --text-secondary: #8aa89a;
+            --text-tertiary: #4d6b5d;
+
+            --border-subtle: rgba(52, 211, 153, 0.08);
+            --border-medium: rgba(52, 211, 153, 0.12);
+            --border-strong: rgba(52, 211, 153, 0.2);
+
+            --accent-emerald: #34d399;
+            --accent-emerald-light: #6ee7b7;
+            --accent-emerald-dark: #10b981;
+            --accent-teal: #2dd4bf;
+            --accent-gradient: linear-gradient(135deg, #34d399, #2dd4bf);
+
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.4);
+            --shadow-md: 0 8px 32px rgba(0, 0, 0, 0.5);
+            --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.6);
+            --shadow-glow: 0 0 60px rgba(52, 211, 153, 0.06);
+
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --radius-xl: 20px;
+
+            --font-display: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-mono: 'JetBrains Mono', 'SF Mono', monospace;
+
+            --container: 1200px;
+            --header-height: 72px;
+
+            transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease;
         }
 
+        /* ==========================================================
+           Base Styles
+           ========================================================== */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: var(--gradient-dark);
-            color: var(--light-color);
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            font-family: var(--font-body);
             line-height: 1.6;
-            min-height: 100vh;
             overflow-x: hidden;
-            position: relative;
+            min-height: 100vh;
         }
 
-        /* Animated Background */
-        body::before {
-            content: '';
+        ::selection {
+            background: var(--accent-emerald);
+            color: #080c0a;
+        }
+
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-secondary);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--accent-emerald-dark);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--accent-emerald);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* ==========================================================
+           Grid Overlay & Ambient Glow
+           ========================================================== */
+        .grid-overlay {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: 
-                radial-gradient(circle at 20% 80%, rgba(108, 99, 255, 0.15) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(255, 101, 132, 0.15) 0%, transparent 50%),
-                radial-gradient(circle at 40% 40%, rgba(74, 68, 198, 0.1) 0%, transparent 50%);
-            z-index: -1;
-            animation: gradientShift 15s ease-in-out infinite alternate;
-        }
-
-        @keyframes gradientShift {
-            0% { transform: scale(1) rotate(0deg); }
-            100% { transform: scale(1.1) rotate(1deg); }
-        }
-
-        /* Floating Particles */
-        .particles {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            inset: 0;
+            z-index: -2;
             pointer-events: none;
-            z-index: -1;
+            background-image:
+                radial-gradient(circle at 20% 50%, rgba(52, 211, 153, 0.04) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(45, 212, 191, 0.03) 0%, transparent 40%);
+            opacity: 0.6;
         }
 
-        .particle {
+        .ambient-glow {
+            position: fixed;
+            inset: 0;
+            z-index: -3;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .blob {
             position: absolute;
-            width: 2px;
-            height: 2px;
-            background: var(--primary-color);
             border-radius: 50%;
-            animation: float 6s ease-in-out infinite;
+            filter: blur(120px);
+            opacity: 0.12;
+            will-change: transform;
         }
 
-        @keyframes float {
-            0%, 100% { transform: translateY(0) translateX(0); }
-            50% { transform: translateY(-20px) translateX(10px); }
+        .blob-emerald {
+            width: 60vw;
+            height: 60vw;
+            top: -30%;
+            left: -20%;
+            background: var(--accent-emerald);
+            animation: floatBlob 30s ease-in-out infinite;
         }
 
-        /* Main Content */
+        .blob-teal {
+            width: 50vw;
+            height: 50vw;
+            bottom: -25%;
+            right: -15%;
+            background: var(--accent-teal);
+            animation: floatBlob 35s ease-in-out infinite reverse;
+        }
+
+        @keyframes floatBlob {
+
+            0%,
+            100% {
+                transform: translate(0, 0) scale(1);
+            }
+
+            33% {
+                transform: translate(5%, -5%) scale(1.1);
+            }
+
+            66% {
+                transform: translate(-3%, 8%) scale(0.9);
+            }
+        }
+
+        /* ==========================================================
+           Header / Navigation
+           ========================================================== */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            height: var(--header-height);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 32px;
+            background: rgba(8, 12, 10, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-subtle);
+            transition: background 0.3s ease, border-color 0.3s ease;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: var(--font-display);
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .logo-mark {
+            display: grid;
+            place-items: center;
+            width: 36px;
+            height: 36px;
+            background: var(--accent-gradient);
+            border-radius: var(--radius-sm);
+            font-family: var(--font-display);
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: #080c0a;
+            letter-spacing: -0.02em;
+        }
+
+        .logo-text {
+            display: inline-flex;
+            align-items: center;
+            gap: 2px;
+        }
+
+        .logo-text span {
+            color: var(--text-secondary);
+            font-weight: 400;
+        }
+
+        .header-controls {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .back-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 18px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            color: var(--text-secondary);
+            font-family: var(--font-body);
+            font-size: 0.85rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .back-btn:hover {
+            border-color: var(--accent-emerald);
+            color: var(--accent-emerald);
+            transform: translateY(-2px);
+        }
+
+        .back-btn i {
+            transition: transform 0.3s ease;
+        }
+
+        .back-btn:hover i {
+            transform: translateX(-4px);
+        }
+
+        /* ==========================================================
+           Main Content
+           ========================================================== */
         main {
-            padding: 2rem;
-            max-width: 1400px;
+            max-width: var(--container);
             margin: 0 auto;
+            padding: 40px 24px 80px;
         }
 
-        /* Header Section */
+        /* ==========================================================
+           Page Header
+           ========================================================== */
         .page-header {
             text-align: center;
-            padding: 4rem 1rem;
+            padding: 40px 20px 60px;
             position: relative;
-            overflow: hidden;
         }
 
-        .page-header::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 300px;
-            height: 300px;
-            background: radial-gradient(circle, rgba(108, 99, 255, 0.2) 0%, transparent 70%);
-            z-index: -1;
-            animation: pulse 3s ease-in-out infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 0.5; transform: translate(-50%, -50%) scale(1); }
-            50% { opacity: 0.8; transform: translate(-50%, -50%) scale(1.2); }
+        .page-header .section-index {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            letter-spacing: 0.1em;
+            color: var(--accent-emerald);
+            text-transform: uppercase;
+            margin-bottom: 12px;
+            font-weight: 500;
         }
 
         .page-header h1 {
-            font-size: 4rem;
-            margin-bottom: 1rem;
+            font-family: var(--font-display);
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            margin-bottom: 16px;
+            line-height: 1.1;
+        }
 
+        .page-header h1 .accent {
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
             background-clip: text;
-            animation: textGlow 3s ease-in-out infinite alternate;
-            color: white;
-        }
-
-        @keyframes textGlow {
-            0% { filter: drop-shadow(0 0 10px rgba(108, 99, 255, 0.3)); }
-            100% { filter: drop-shadow(0 0 20px rgba(255, 101, 132, 0.3)); }
-        }
-
-        .page-header h1 span {
-            position: relative;
-            display: inline-block;
-            color: var(--light-color);
-        }
-
-        .page-header h1 span::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 200px;
-            height: 4px;
-            background: var(--gradient-primary);
-            border-radius: 2px;
         }
 
         .page-header p {
-            font-size: 1.2rem;
-            color: rgba(255, 255, 255, 0.8);
-            max-width: 600px;
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            max-width: 560px;
             margin: 0 auto;
-            line-height: 1.8;
+            line-height: 1.7;
         }
 
-        /* Project Counter */
-        .project-counter {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 2rem;
-            margin: 2rem 0;
-            flex-wrap: wrap;
+        /* ==========================================================
+           Stats Counter
+           ========================================================== */
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin: 0 0 48px 0;
         }
 
-        .counter-item {
-            background: var(--glass-bg);
-            backdrop-filter: blur(10px);
-            border: 1px solid var(--glass-border);
-            border-radius: var(--border-radius);
-            padding: 1.5rem 2rem;
+        .stat-item {
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+            padding: 24px 20px;
             text-align: center;
-            min-width: 200px;
-            transition: var(--transition);
-            position: relative;
-            overflow: hidden;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        .counter-item::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-            transition: var(--transition);
+        .stat-item:hover {
+            transform: translateY(-4px);
+            border-color: var(--border-medium);
+            box-shadow: var(--shadow-md);
         }
 
-        .counter-item:hover::before {
-            left: 100%;
-        }
-
-        .counter-item:hover {
-            transform: translateY(-5px);
-            border-color: var(--primary-color);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .counter-item .number {
-            font-size: 2.5rem;
+        .stat-number {
+            font-family: var(--font-display);
+            font-size: 2.2rem;
             font-weight: 700;
-            background: var(--gradient-primary);
+            background: var(--accent-gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
             display: block;
-            margin-bottom: 0.5rem;
+            line-height: 1;
         }
 
-        .counter-item .label {
-            font-size: 1rem;
-            color: rgba(255, 255, 255, 0.7);
-            text-transform: uppercase;
-            letter-spacing: 1px;
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-top: 4px;
         }
 
-        /* Enhanced Project Cards */
+        /* ==========================================================
+           Filter Section
+           ========================================================== */
+        .filter-section {
+            margin-bottom: 40px;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .filter-btn {
+            padding: 8px 20px;
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: 50px;
+            color: var(--text-secondary);
+            font-family: var(--font-body);
+            font-size: 0.85rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .filter-btn:hover {
+            border-color: var(--border-medium);
+            color: var(--text-primary);
+        }
+
+        .filter-btn.active {
+            background: var(--accent-gradient);
+            color: #080c0a;
+            border-color: transparent;
+            box-shadow: 0 4px 16px rgba(52, 211, 153, 0.25);
+        }
+
+        /* ==========================================================
+           Projects Grid
+           ========================================================== */
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 2rem;
-            padding: 2rem 0;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 24px;
         }
 
         .project-card {
-            background: var(--glass-bg);
-            backdrop-filter: blur(10px);
-            border: 1px solid var(--glass-border);
-            border-radius: var(--border-radius);
+            background: var(--bg-card);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
             overflow: hidden;
-            transition: var(--transition);
-            position: relative;
-            height: 400px;
-            display: flex;
-            flex-direction: column;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            opacity: 0;
+            transform: translateY(30px);
         }
 
-        .project-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: var(--gradient-primary);
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        .project-card.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .project-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            border-color: var(--primary-color);
+            transform: translateY(-8px);
+            border-color: var(--border-medium);
             box-shadow: var(--shadow-lg);
         }
 
-        .project-card:hover::before {
-            transform: scaleX(1);
+        .project-card.hidden {
+            display: none;
         }
 
         .card-image {
+            position: relative;
             height: 200px;
             overflow: hidden;
-            position: relative;
+            background: var(--bg-elevated);
         }
 
         .card-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: var(--transition);
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         .project-card:hover .card-image img {
-            transform: scale(1.1) rotate(1deg);
+            transform: scale(1.05);
         }
 
         .card-badge {
             position: absolute;
-            top: 1rem;
-            right: 1rem;
-            background: var(--gradient-primary);
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
+            top: 12px;
+            right: 12px;
+            padding: 4px 14px;
+            background: var(--accent-gradient);
+            color: #080c0a;
+            font-size: 0.7rem;
             font-weight: 600;
+            border-radius: 50px;
+            letter-spacing: 0.02em;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
-            z-index: 2;
-            box-shadow: var(--shadow-sm);
+            font-family: var(--font-mono);
         }
 
         .card-content {
-            padding: 1.5rem;
-            flex: 1;
-            display: flex;
-            flex-direction: column;
+            padding: 20px 24px 24px;
         }
 
         .card-content h3 {
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem;
-            color: var(--light-color);
+            font-family: var(--font-display);
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 6px;
+            letter-spacing: -0.02em;
         }
 
         .card-content p {
-            color: rgba(255, 255, 255, 0.8);
-            font-size: 0.95rem;
+            color: var(--text-secondary);
+            font-size: 0.92rem;
             line-height: 1.6;
-            margin-bottom: 1rem;
-            flex: 1;
+            margin-bottom: 14px;
         }
 
         .card-tech {
             display: flex;
             flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-bottom: 1rem;
+            gap: 6px;
+            margin-bottom: 16px;
         }
 
         .tech-tag {
-            background: rgba(108, 99, 255, 0.1);
-            color: var(--primary-color);
-            padding: 0.3rem 0.8rem;
-            border-radius: 15px;
-            font-size: 0.8rem;
+            padding: 4px 12px;
+            background: var(--bg-elevated);
+            border: 1px solid var(--border-subtle);
+            border-radius: 50px;
+            font-size: 0.75rem;
             font-weight: 500;
-            border: 1px solid rgba(108, 99, 255, 0.2);
-            transition: var(--transition);
+            color: var(--text-secondary);
+            font-family: var(--font-mono);
+            transition: all 0.2s ease;
         }
 
         .tech-tag:hover {
-            background: var(--primary-color);
-            color: white;
-            transform: translateY(-2px);
+            border-color: var(--accent-emerald);
+            color: var(--accent-emerald);
         }
 
         .card-actions {
             display: flex;
-            gap: 1rem;
-            margin-top: auto;
+            gap: 10px;
         }
 
-        .action-button {
+        .action-btn {
             flex: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-            padding: 0.8rem 1.5rem;
-            border: none;
-            border-radius: 10px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: var(--transition);
-            text-decoration: none;
-            font-size: 0.9rem;
-        }
-
-        .action-button.view {
-            background: var(--gradient-primary);
-            color: white;
-        }
-
-        .action-button.code {
-            background: rgba(255, 255, 255, 0.1);
-            color: var(--light-color);
-            border: 1px solid var(--glass-border);
-        }
-
-        .action-button:hover {
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-md);
-        }
-
-        .action-button.view:hover {
-            background: var(--secondary-color);
-        }
-
-        .action-button.code:hover {
-            background: rgba(255, 255, 255, 0.2);
-            border-color: var(--primary-color);
-        }
-
-        /* Back Button */
-        .back-section {
-            text-align: center;
-            padding: 4rem 1rem;
-        }
-
-        .back-button {
             display: inline-flex;
             align-items: center;
-            gap: 1rem;
-            background: var(--glass-bg);
-            backdrop-filter: blur(10px);
-            border: 1px solid var(--glass-border);
-            color: var(--light-color);
-            padding: 1.2rem 3rem;
-            border-radius: 50px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: var(--transition);
-            position: relative;
-            overflow: hidden;
-            text-decoration: none;
-        }
-
-        .back-button::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: var(--gradient-primary);
-            transition: var(--transition);
-            z-index: -1;
-        }
-
-        .back-button:hover::before {
-            left: 0;
-        }
-
-        .back-button:hover {
-            color: white;
-            transform: translateY(-5px);
-            border-color: var(--primary-color);
-            box-shadow: 0 15px 30px rgba(108, 99, 255, 0.3);
-        }
-
-        .back-button svg {
-            transition: var(--transition);
-        }
-
-        .back-button:hover svg {
-            transform: translateX(-5px);
-        }
-
-        /* Filter Section */
-        .filter-section {
-            padding: 2rem 0;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .filter-tabs {
-            display: flex;
             justify-content: center;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-
-        .filter-tab {
-            background: var(--glass-bg);
-            backdrop-filter: blur(10px);
-            border: 1px solid var(--glass-border);
-            color: rgba(255, 255, 255, 0.7);
-            padding: 0.8rem 1.5rem;
-            border-radius: 25px;
-            cursor: pointer;
-            transition: var(--transition);
+            gap: 8px;
+            padding: 10px 16px;
+            border-radius: var(--radius-sm);
+            font-family: var(--font-body);
+            font-size: 0.85rem;
             font-weight: 500;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        .filter-tab:hover,
-        .filter-tab.active {
-            background: var(--gradient-primary);
-            color: white;
-            border-color: var(--primary-color);
+        .action-btn.primary {
+            background: var(--accent-gradient);
+            color: #080c0a;
+        }
+
+        .action-btn.primary:hover {
             transform: translateY(-2px);
-            box-shadow: var(--shadow-md);
+            box-shadow: 0 4px 16px rgba(52, 211, 153, 0.3);
         }
 
-        /* Loading Animation */
-        .loader {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: var(--dark-color);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-            transition: opacity 0.5s ease;
+        .action-btn.secondary {
+            background: var(--bg-elevated);
+            color: var(--text-secondary);
+            border: 1px solid var(--border-subtle);
         }
 
-        .loader.hidden {
-            opacity: 0;
-            visibility: hidden;
+        .action-btn.secondary:hover {
+            border-color: var(--accent-emerald);
+            color: var(--accent-emerald);
+            transform: translateY(-2px);
         }
 
-        .spinner {
-            width: 50px;
-            height: 50px;
-            border: 3px solid transparent;
-            border-top-color: var(--primary-color);
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
+        .action-btn.coming {
+            opacity: 0.5;
+            cursor: not-allowed;
         }
 
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+        /* ==========================================================
+           No Results
+           ========================================================== */
+        .no-results {
+            text-align: center;
+            padding: 60px 20px;
+            display: none;
         }
 
-        /* Scroll Animation */
-        .animate-on-scroll {
-            opacity: 0;
-            transform: translateY(50px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
+        .no-results.show {
+            display: block;
         }
 
-        .animate-on-scroll.visible {
-            opacity: 1;
-            transform: translateY(0);
+        .no-results i {
+            font-size: 3rem;
+            color: var(--text-tertiary);
+            margin-bottom: 16px;
         }
 
-        /* Responsive Design */
-        @media (max-width: 1200px) {
-            .projects-grid {
-                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        .no-results h3 {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            margin-bottom: 8px;
+        }
+
+        .no-results p {
+            color: var(--text-secondary);
+        }
+
+        /* ==========================================================
+           Footer
+           ========================================================== */
+        footer {
+            border-top: 1px solid var(--border-subtle);
+            padding: 32px 24px;
+            margin-top: 40px;
+        }
+
+        .footer-content {
+            max-width: var(--container);
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .footer-content p {
+            color: var(--text-tertiary);
+            font-size: 0.85rem;
+        }
+
+        /* ==========================================================
+           Responsive Design
+           ========================================================== */
+        @media (max-width: 1024px) {
+            .stats-container {
+                grid-template-columns: repeat(2, 1fr);
             }
         }
 
         @media (max-width: 768px) {
-            .page-header h1 {
-                font-size: 2.5rem;
+            header {
+                padding: 0 16px;
+            }
+
+            main {
+                padding: 20px 16px 60px;
+            }
+
+            .page-header {
+                padding: 20px 10px 40px;
             }
 
             .projects-grid {
                 grid-template-columns: 1fr;
+                max-width: 480px;
+                margin: 0 auto;
             }
 
-            .counter-item {
-                min-width: 150px;
-                padding: 1rem 1.5rem;
+            .stats-container {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
+            }
+
+            .stat-item {
+                padding: 16px;
+            }
+
+            .stat-number {
+                font-size: 1.6rem;
+            }
+
+            .filter-section {
+                gap: 6px;
+            }
+
+            .filter-btn {
+                padding: 6px 14px;
+                font-size: 0.75rem;
             }
 
             .card-actions {
                 flex-direction: column;
             }
 
-            .filter-tabs {
-                gap: 0.5rem;
-            }
-
-            .filter-tab {
-                padding: 0.6rem 1.2rem;
-                font-size: 0.9rem;
+            .back-btn span {
+                display: none;
             }
         }
 
         @media (max-width: 480px) {
-            main {
-                padding: 1rem;
+            .stats-container {
+                grid-template-columns: 1fr 1fr;
+                gap: 10px;
             }
 
-            .page-header {
-                padding: 2rem 1rem;
+            .stat-item {
+                padding: 12px;
+            }
+
+            .stat-number {
+                font-size: 1.4rem;
+            }
+
+            .stat-label {
+                font-size: 0.75rem;
             }
 
             .page-header h1 {
                 font-size: 2rem;
             }
 
-            .project-counter {
-                flex-direction: column;
-                gap: 1rem;
+            .card-image {
+                height: 160px;
+            }
+        }
+
+        /* ==========================================================
+           Reduced Motion
+           ========================================================== */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation: none !important;
+                transition: none !important;
             }
 
-            .counter-item {
-                width: 100%;
+            .project-card {
+                opacity: 1 !important;
+                transform: none !important;
             }
         }
     </style>
 </head>
 
 <body>
-    <!-- Loading Animation -->
-    <div class="loader" id="loader">
-        <div class="spinner"></div>
+
+    <!-- Background Effects -->
+    <div class="grid-overlay" aria-hidden="true"></div>
+    <div class="ambient-glow" aria-hidden="true">
+        <span class="blob blob-emerald"></span>
+        <span class="blob blob-teal"></span>
     </div>
 
-    <!-- Floating Particles -->
-    <div class="particles" id="particles"></div>
+    <!-- Header -->
+    <header>
+        <a href="index.html" class="logo">
+            <span class="logo-mark">AJ</span>
+            <span class="logo-text">Srabon</span>
+        </a>
+        <div class="header-controls">
+            <a href="index.html#projects" class="back-btn">
+                <i class="fas fa-arrow-left"></i>
+                <span>Back to Portfolio</span>
+            </a>
+        </div>
+    </header>
 
+    <!-- Main Content -->
     <main>
-        <!-- Header Section -->
-        <section class="page-header animate-on-scroll">
-            <h1>My <span>Projects</span> </h1>
-            <p>A collection of my work showcasing skills in web development, design, and problem-solving. Each project represents a unique challenge and solution.</p>
+
+        <!-- Page Header -->
+        <section class="page-header">
+            <p class="section-index">Projects</p>
+            <h1>All <span class="accent">Projects</span></h1>
+            <p>A curated collection of my work — from web applications to Python tools. Each project reflects a
+                commitment to clean code and thoughtful design.</p>
         </section>
 
-        <!-- Project Counter -->
-        <div class="project-counter animate-on-scroll">
-            <div class="counter-item">
-                <span class="number" id="totalProjects">8</span>
-                <span class="label">Total Projects</span>
+        <!-- Stats -->
+        <div class="stats-container">
+            <div class="stat-item">
+                <span class="stat-number" id="totalProjects">0</span>
+                <span class="stat-label">Total Projects</span>
             </div>
-            <div class="counter-item">
-                <span class="number" id="webProjects">6</span>
-                <span class="label">Web Projects</span>
+            <div class="stat-item">
+                <span class="stat-number" id="webProjects">0</span>
+                <span class="stat-label">Web Development</span>
             </div>
-            <div class="counter-item">
-                <span class="number" id="currentYear">2024</span>
-                <span class="label">Active Year</span>
+            <div class="stat-item">
+                <span class="stat-number" id="pythonProjects">0</span>
+                <span class="stat-label">Python Projects</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number" id="currentYear">2026</span>
+                <span class="stat-label">Active Year</span>
             </div>
         </div>
 
-        <!-- Filter Tabs -->
-        <section class="filter-section animate-on-scroll">
-            <div class="filter-tabs">
-                <button class="filter-tab active" data-filter="all">All Projects</button>
-                <button class="filter-tab" data-filter="web">Web Development</button>
-                <button class="filter-tab" data-filter="python">Python</button>
-                <button class="filter-tab" data-filter="bootstrap">Bootstrap</button>
-                <button class="filter-tab" data-filter="django">Django</button>
-            </div>
-        </section>
+        <!-- Filter -->
+        <div class="filter-section" id="filterSection">
+            <button class="filter-btn active" data-filter="all">All Projects</button>
+            <button class="filter-btn" data-filter="web">Web Development</button>
+            <button class="filter-btn" data-filter="python">Python</button>
+            <button class="filter-btn" data-filter="bootstrap">Bootstrap</button>
+            <button class="filter-btn" data-filter="django">Django</button>
+        </div>
+
+        <!-- No Results -->
+        <div class="no-results" id="noResults">
+            <i class="fas fa-search"></i>
+            <h3>No projects found</h3>
+            <p>Try adjusting your filter to see more projects.</p>
+        </div>
 
         <!-- Projects Grid -->
-        <section class="projects-grid" id="projectsGrid">
-            <!-- Project 1 -->
-            <div class="project-card animate-on-scroll" data-category="web bootstrap">
+        <div class="projects-grid" id="projectsGrid">
+
+            <!-- Project 1 - MacBook Promo -->
+            <div class="project-card" data-category="web bootstrap">
                 <div class="card-image">
-                    <img src="assest/project/macbook.png" alt="MacBook Promo Project" loading="lazy">
+                    <img src="assest/project/macbook.png" alt="MacBook Promo System" loading="lazy">
                     <span class="card-badge">Web Dev</span>
                 </div>
                 <div class="card-content">
                     <h3>MacBook Promo System</h3>
-                    <p>A responsive website with promo code functionality built using Bootstrap 5. Features modern UI design and interactive elements.</p>
+                    <p>Responsive promo website with interactive code functionality built with Bootstrap 5.</p>
                     <div class="card-tech">
                         <span class="tech-tag">HTML5</span>
                         <span class="tech-tag">CSS3</span>
@@ -651,83 +796,79 @@
                         <span class="tech-tag">JavaScript</span>
                     </div>
                     <div class="card-actions">
-                        <a href="https://bootstrap-project-02.netlify.app/" target="_blank" class="action-button view">
-                            <i class="fas fa-eye"></i>
-                            Live Demo
+                        <a href="https://bootstrap-project-02.netlify.app/" target="_blank" class="action-btn primary">
+                            <i class="fas fa-eye"></i> Live Demo
                         </a>
-                        <a href="https://github.com/ajsrabon99/project_macbook" target="_blank" class="action-button code">
-                            <i class="fab fa-github"></i>
-                            View Code
+                        <a href="https://github.com/ajsrabon99/project_macbook" target="_blank"
+                            class="action-btn secondary">
+                            <i class="fab fa-github"></i> Code
                         </a>
                     </div>
                 </div>
             </div>
 
-            <!-- Project 2 -->
-            <div class="project-card animate-on-scroll" data-category="web bootstrap">
+            <!-- Project 2 - Bootslander -->
+            <div class="project-card" data-category="web bootstrap">
                 <div class="card-image">
                     <img src="assest/project/bootslandr.png" alt="Bootslander Website" loading="lazy">
                     <span class="card-badge">Bootstrap</span>
                 </div>
                 <div class="card-content">
                     <h3>Bootslander Website</h3>
-                    <p>A complete Bootstrap-based website with multiple sections including hero, features, portfolio, and contact form.</p>
+                    <p>Complete Bootstrap website with hero, features, portfolio, and contact sections.</p>
                     <div class="card-tech">
                         <span class="tech-tag">Bootstrap 5</span>
                         <span class="tech-tag">Responsive</span>
                         <span class="tech-tag">JavaScript</span>
-                        <span class="tech-tag">CSS3</span>
                     </div>
                     <div class="card-actions">
-                        <a href="https://bootslander-ostad-assignment4.netlify.app/" target="_blank" class="action-button view">
-                            <i class="fas fa-eye"></i>
-                            Live Demo
+                        <a href="https://bootslander-ostad-assignment4.netlify.app/" target="_blank"
+                            class="action-btn primary">
+                            <i class="fas fa-eye"></i> Live Demo
                         </a>
-                        <a href="https://github.com/ajsrabon99/Bootslander-WebSite" target="_blank" class="action-button code">
-                            <i class="fab fa-github"></i>
-                            View Code
+                        <a href="https://github.com/ajsrabon99/Bootslander-WebSite" target="_blank"
+                            class="action-btn secondary">
+                            <i class="fab fa-github"></i> Code
                         </a>
                     </div>
                 </div>
             </div>
 
-            <!-- Project 3 -->
-            <div class="project-card animate-on-scroll" data-category="web bootstrap">
+            <!-- Project 3 - Bootstrap Portfolio -->
+            <div class="project-card" data-category="web bootstrap">
                 <div class="card-image">
                     <img src="assest/project/bootstrap_project.png" alt="Bootstrap Portfolio" loading="lazy">
                     <span class="card-badge">Portfolio</span>
                 </div>
                 <div class="card-content">
-                    <h3>Bootstrap Portfolio Website</h3>
-                    <p>Modern portfolio website built with Bootstrap featuring responsive design, smooth animations, and clean layout.</p>
+                    <h3>Bootstrap Portfolio</h3>
+                    <p>Modern portfolio website with responsive design and smooth animations.</p>
                     <div class="card-tech">
                         <span class="tech-tag">Bootstrap</span>
                         <span class="tech-tag">Portfolio</span>
                         <span class="tech-tag">Responsive</span>
-                        <span class="tech-tag">Modern UI</span>
                     </div>
                     <div class="card-actions">
-                        <a href="https://bootstrap-prjct-01.netlify.app/" target="_blank" class="action-button view">
-                            <i class="fas fa-eye"></i>
-                            Live Demo
+                        <a href="https://bootstrap-prjct-01.netlify.app/" target="_blank" class="action-btn primary">
+                            <i class="fas fa-eye"></i> Live Demo
                         </a>
-                        <a href="https://github.com/ajsrabon99/Bootstrap-Project" target="_blank" class="action-button code">
-                            <i class="fab fa-github"></i>
-                            View Code
+                        <a href="https://github.com/ajsrabon99/Bootstrap-Project" target="_blank"
+                            class="action-btn secondary">
+                            <i class="fab fa-github"></i> Code
                         </a>
                     </div>
                 </div>
             </div>
 
-            <!-- Project 4 -->
-            <div class="project-card animate-on-scroll" data-category="web python django">
+            <!-- Project 4 - Web App Calculator -->
+            <div class="project-card" data-category="web python django">
                 <div class="card-image">
-                    <img src="assest/project/calculator.png" alt="Web Calculator" loading="lazy">
+                    <img src="assest/project/calculator.png" alt="Web App Calculator" loading="lazy">
                     <span class="card-badge">Full Stack</span>
                 </div>
                 <div class="card-content">
                     <h3>Web App Calculator</h3>
-                    <p>A full-featured calculator web application built with Python and Django. Features mathematical operations and responsive design.</p>
+                    <p>Full-featured calculator built with Python and Django with responsive design.</p>
                     <div class="card-tech">
                         <span class="tech-tag">Python</span>
                         <span class="tech-tag">Django</span>
@@ -735,322 +876,267 @@
                         <span class="tech-tag">JavaScript</span>
                     </div>
                     <div class="card-actions">
-                        <a href="https://webappcalculator.onrender.com/" target="_blank" class="action-button view">
-                            <i class="fas fa-eye"></i>
-                            Live Demo
+                        <a href="https://webappcalculator.onrender.com/" target="_blank" class="action-btn primary">
+                            <i class="fas fa-eye"></i> Live Demo
                         </a>
-                        <a href="https://github.com/ajsrabon99/WebAppCalculator" target="_blank" class="action-button code">
-                            <i class="fab fa-github"></i>
-                            View Code
+                        <a href="https://github.com/ajsrabon99/WebAppCalculator" target="_blank"
+                            class="action-btn secondary">
+                            <i class="fab fa-github"></i> Code
                         </a>
                     </div>
                 </div>
             </div>
 
-            <!-- Project 5 -->
-            <div class="project-card animate-on-scroll" data-category="python">
+            <!-- Project 5 - Python Calculator -->
+            <div class="project-card" data-category="python">
                 <div class="card-image">
                     <img src="./assest/images/project1.jpg" alt="Python Calculator" loading="lazy">
                     <span class="card-badge">Python</span>
                 </div>
                 <div class="card-content">
                     <h3>Python Calculator</h3>
-                    <p>A simple calculator application built with Python featuring basic arithmetic operations and clean interface.</p>
+                    <p>Simple GUI calculator built with Python and Tkinter featuring basic operations.</p>
                     <div class="card-tech">
                         <span class="tech-tag">Python</span>
-                        <span class="tech-tag">GUI</span>
                         <span class="tech-tag">Tkinter</span>
+                        <span class="tech-tag">GUI</span>
                     </div>
                     <div class="card-actions">
-                        <a href="https://github.com/ajsrabon99/simple_calculator" target="_blank" class="action-button view">
-                            <i class="fas fa-eye"></i>
-                            View Project
+                        <a href="https://github.com/ajsrabon99/simple_calculator" target="_blank"
+                            class="action-btn primary">
+                            <i class="fas fa-eye"></i> View Project
                         </a>
-                        <a href="https://github.com/ajsrabon99/simple_calculator" target="_blank" class="action-button code">
-                            <i class="fab fa-github"></i>
-                            Source Code
+                        <a href="https://github.com/ajsrabon99/simple_calculator" target="_blank"
+                            class="action-btn secondary">
+                            <i class="fab fa-github"></i> Code
                         </a>
                     </div>
                 </div>
             </div>
 
-            <!-- Project 6 -->
-            <div class="project-card animate-on-scroll" data-category="python">
+            <!-- Project 6 - Tic Tac Toe -->
+            <div class="project-card" data-category="python">
                 <div class="card-image">
                     <img src="./assest/images/project2.jpg" alt="Tic Tac Toe Game" loading="lazy">
                     <span class="card-badge">Game</span>
                 </div>
                 <div class="card-content">
                     <h3>Tic Tac Toe Game</h3>
-                    <p>Interactive Tic Tac Toe game built with Python featuring two-player mode and clean console interface.</p>
+                    <p>Interactive Tic Tac Toe game with two-player mode and clean console interface.</p>
                     <div class="card-tech">
                         <span class="tech-tag">Python</span>
                         <span class="tech-tag">Game Dev</span>
                         <span class="tech-tag">Logic</span>
                     </div>
                     <div class="card-actions">
-                        <a href="https://github.com/ajsrabon99/tic-tac-game" target="_blank" class="action-button view">
-                            <i class="fas fa-eye"></i>
-                            View Project
+                        <a href="https://github.com/ajsrabon99/tic-tac-game" target="_blank" class="action-btn primary">
+                            <i class="fas fa-eye"></i> View Project
                         </a>
-                        <a href="https://github.com/ajsrabon99/tic-tac-game" target="_blank" class="action-button code">
-                            <i class="fab fa-github"></i>
-                            Source Code
+                        <a href="https://github.com/ajsrabon99/tic-tac-game" target="_blank"
+                            class="action-btn secondary">
+                            <i class="fab fa-github"></i> Code
                         </a>
                     </div>
                 </div>
             </div>
 
-            <!-- Project 7 -->
-            <div class="project-card animate-on-scroll" data-category="python">
+            <!-- Project 7 - School Management -->
+            <div class="project-card" data-category="python">
                 <div class="card-image">
                     <img src="./assest/images/project3.jpeg" alt="School Management System" loading="lazy">
                     <span class="card-badge">Database</span>
                 </div>
                 <div class="card-content">
                     <h3>School Management System</h3>
-                    <p>Comprehensive school management system with SQL database integration for student and faculty management.</p>
+                    <p>Comprehensive school management system with SQL database integration.</p>
                     <div class="card-tech">
                         <span class="tech-tag">Python</span>
                         <span class="tech-tag">SQL</span>
                         <span class="tech-tag">Database</span>
-                        <span class="tech-tag">Management</span>
                     </div>
                     <div class="card-actions">
-                        <a href="https://github.com/ajsrabon99/school_management" target="_blank" class="action-button view">
-                            <i class="fas fa-eye"></i>
-                            View Project
+                        <a href="https://github.com/ajsrabon99/school_management" target="_blank"
+                            class="action-btn primary">
+                            <i class="fas fa-eye"></i> View Project
                         </a>
-                        <a href="https://github.com/ajsrabon99/school_management" target="_blank" class="action-button code">
-                            <i class="fab fa-github"></i>
-                            Source Code
+                        <a href="https://github.com/ajsrabon99/school_management" target="_blank"
+                            class="action-btn secondary">
+                            <i class="fab fa-github"></i> Code
                         </a>
                     </div>
                 </div>
             </div>
 
             <!-- Project 8 - Coming Soon -->
-            <div class="project-card animate-on-scroll" data-category="web">
-                <div class="card-image">
-                    <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); height: 100%; display: flex; align-items: center; justify-content: center;">
-                        <i class="fas fa-code fa-3x" style="color: white;"></i>
-                    </div>
+            <div class="project-card" data-category="web">
+                <div class="card-image"
+                    style="background: var(--bg-elevated); display: flex; align-items: center; justify-content: center;">
+                    <i class="fas fa-code" style="font-size: 3rem; color: var(--text-tertiary);"></i>
                     <span class="card-badge">Coming Soon</span>
                 </div>
                 <div class="card-content">
-                    <h3>New Project in Progress</h3>
-                    <p>Working on an exciting new web development project. Stay tuned for updates!</p>
+                    <h3>New Project</h3>
+                    <p>Exciting new web development project in progress. Stay tuned!</p>
                     <div class="card-tech">
                         <span class="tech-tag">React</span>
                         <span class="tech-tag">Node.js</span>
                         <span class="tech-tag">MongoDB</span>
                     </div>
                     <div class="card-actions">
-                        <button class="action-button view" style="opacity: 0.6; cursor: default;">
-                            <i class="fas fa-clock"></i>
-                            Coming Soon
+                        <button class="action-btn primary coming" disabled>
+                            <i class="fas fa-clock"></i> Coming Soon
                         </button>
-                        <button class="action-button code" style="opacity: 0.6; cursor: default;">
-                            <i class="fas fa-lock"></i>
-                            Private
+                        <button class="action-btn secondary coming" disabled>
+                            <i class="fas fa-lock"></i> Private
                         </button>
                     </div>
                 </div>
             </div>
-        </section>
 
-        <!-- Back Button -->
-        <section class="back-section animate-on-scroll">
-            <a href="index.html#projects" class="back-button">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" height="20px" width="20px" fill="currentColor">
-                    <path d="M224 480h640a32 32 0 1 1 0 64H224a32 32 0 0 1 0-64z"></path>
-                    <path d="m237.248 512 265.408 265.344a32 32 0 0 1-45.312 45.312l-288-288a32 32 0 0 1 0-45.312l288-288a32 32 0 1 1 45.312 45.312L237.248 512z"></path>
-                </svg>
-                Back to Portfolio
-            </a>
-        </section>
+        </div>
+
     </main>
 
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2026 AJ Srabon. All rights reserved.</p>
+        </div>
+    </footer>
+
     <script>
-        // Page Load Animation
-        window.addEventListener('load', () => {
-            const loader = document.getElementById('loader');
-            setTimeout(() => {
-                loader.classList.add('hidden');
-                
-                // Initialize animations
-                initParticles();
-                initScrollAnimations();
-                initFilters();
-                updateProjectCount();
-                
-                // Add initial animation
-                document.body.style.opacity = '0';
-                document.body.style.transition = 'opacity 0.5s ease';
-                setTimeout(() => {
-                    document.body.style.opacity = '1';
-                }, 100);
-            }, 1000);
-        });
+        // ==========================================================
+        // JavaScript - All Projects Page
+        // ==========================================================
 
-        // Create Floating Particles
-        function initParticles() {
-            const particlesContainer = document.getElementById('particles');
-            const particleCount = 50;
-            
-            for (let i = 0; i < particleCount; i++) {
-                const particle = document.createElement('div');
-                particle.className = 'particle';
-                
-                // Random position
-                particle.style.left = Math.random() * 100 + 'vw';
-                particle.style.top = Math.random() * 100 + 'vh';
-                
-                // Random size
-                const size = Math.random() * 3 + 1;
-                particle.style.width = size + 'px';
-                particle.style.height = size + 'px';
-                
-                // Random opacity
-                particle.style.opacity = Math.random() * 0.5 + 0.1;
-                
-                // Random animation delay
-                particle.style.animationDelay = Math.random() * 6 + 's';
-                
-                particlesContainer.appendChild(particle);
-            }
-        }
+        document.addEventListener('DOMContentLoaded', () => {
 
-        // Scroll Animations
-        function initScrollAnimations() {
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                    }
-                });
-            }, {
-                threshold: 0.1,
-                rootMargin: '0px 0px -50px 0px'
-            });
-            
-            document.querySelectorAll('.animate-on-scroll').forEach(el => {
-                observer.observe(el);
-            });
-        }
-
-        // Project Filtering
-        function initFilters() {
-            const filterTabs = document.querySelectorAll('.filter-tab');
+            // --------------------------------------------------
+            // Filter Functionality
+            // --------------------------------------------------
+            const filterBtns = document.querySelectorAll('.filter-btn');
             const projectCards = document.querySelectorAll('.project-card');
-            
-            filterTabs.forEach(tab => {
-                tab.addEventListener('click', () => {
-                    // Update active tab
-                    filterTabs.forEach(t => t.classList.remove('active'));
-                    tab.classList.add('active');
-                    
-                    const filter = tab.dataset.filter;
-                    
-                    // Filter projects
+            const noResults = document.getElementById('noResults');
+
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', function () {
+                    // Update active button
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+
+                    const filter = this.dataset.filter;
+                    let visibleCount = 0;
+
                     projectCards.forEach(card => {
-                        if (filter === 'all' || card.dataset.category.includes(filter)) {
-                            card.style.display = 'flex';
-                            card.style.animation = 'none';
+                        const categories = card.dataset.category.split(' ');
+                        if (filter === 'all' || categories.includes(filter)) {
+                            card.classList.remove('hidden');
+                            // Add visible class with stagger
                             setTimeout(() => {
-                                card.style.animation = '';
-                            }, 10);
+                                card.classList.add('visible');
+                            }, 50 * visibleCount);
+                            visibleCount++;
                         } else {
-                            card.style.display = 'none';
+                            card.classList.add('hidden');
+                            card.classList.remove('visible');
                         }
                     });
-                    
-                    // Update project count
-                    updateFilteredCount(filter);
+
+                    // Show/hide no results message
+                    if (visibleCount === 0) {
+                        noResults.classList.add('show');
+                    } else {
+                        noResults.classList.remove('show');
+                    }
                 });
             });
-        }
 
-        // Update Project Counts
-        function updateProjectCount() {
-            const totalProjects = document.querySelectorAll('.project-card').length;
-            const webProjects = document.querySelectorAll('.project-card[data-category*="web"]').length;
-            const currentYear = new Date().getFullYear();
-            
-            document.getElementById('totalProjects').textContent = totalProjects;
-            document.getElementById('webProjects').textContent = webProjects;
-            document.getElementById('currentYear').textContent = currentYear;
-            
-            // Animate numbers
-            animateValue('totalProjects', 0, totalProjects, 1000);
-            animateValue('webProjects', 0, webProjects, 1000);
-        }
-
-        function updateFilteredCount(filter) {
-            let count = 0;
-            const projectCards = document.querySelectorAll('.project-card');
-            
-            projectCards.forEach(card => {
-                if (filter === 'all' || card.dataset.category.includes(filter)) {
-                    count++;
-                }
-            });
-            
-            // Update counter animation
-            animateValue('totalProjects', parseInt(document.getElementById('totalProjects').textContent), count, 500);
-        }
-
-        // Number Animation
-        function animateValue(id, start, end, duration) {
-            const obj = document.getElementById(id);
-            let startTimestamp = null;
-            const step = (timestamp) => {
-                if (!startTimestamp) startTimestamp = timestamp;
-                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-                obj.textContent = Math.floor(progress * (end - start) + start);
-                if (progress < 1) {
-                    window.requestAnimationFrame(step);
-                }
-            };
-            window.requestAnimationFrame(step);
-        }
-
-        // Add hover effect to project cards
-        document.querySelectorAll('.project-card').forEach(card => {
-            card.addEventListener('mouseenter', (e) => {
-                const rect = card.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                
-                card.style.setProperty('--mouse-x', x + 'px');
-                card.style.setProperty('--mouse-y', y + 'px');
-            });
-        });
-
-        // Add keyboard navigation
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') {
-                window.location.href = 'index.html#projects';
+            // --------------------------------------------------
+            // Staggered Card Animation
+            // --------------------------------------------------
+            function animateCards() {
+                const cards = document.querySelectorAll('.project-card:not(.hidden)');
+                cards.forEach((card, index) => {
+                    setTimeout(() => {
+                        card.classList.add('visible');
+                    }, 80 * index);
+                });
             }
+
+            // Initial animation
+            setTimeout(animateCards, 200);
+
+            // --------------------------------------------------
+            // Stats Counter Animation
+            // --------------------------------------------------
+            function animateStats() {
+                const total = document.querySelectorAll('.project-card').length;
+                const web = document.querySelectorAll('.project-card[data-category*="web"]').length;
+                const python = document.querySelectorAll('.project-card[data-category*="python"]').length;
+                const year = new Date().getFullYear();
+
+                animateNumber('totalProjects', total);
+                animateNumber('webProjects', web);
+                animateNumber('pythonProjects', python);
+                document.getElementById('currentYear').textContent = year;
+            }
+
+            function animateNumber(id, target) {
+                const el = document.getElementById(id);
+                let current = 0;
+                const duration = 1000;
+                const step = Math.ceil(target / 30);
+
+                const timer = setInterval(() => {
+                    current += step;
+                    if (current >= target) {
+                        current = target;
+                        clearInterval(timer);
+                    }
+                    el.textContent = current;
+                }, 30);
+            }
+
+            setTimeout(animateStats, 300);
+
+            // --------------------------------------------------
+            // Keyboard Navigation - Escape to go back
+            // --------------------------------------------------
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    window.location.href = 'index.html#projects';
+                }
+            });
+
+            // --------------------------------------------------
+            // Smooth Back Button
+            // --------------------------------------------------
+            const backBtn = document.querySelector('.back-btn');
+            if (backBtn) {
+                backBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    document.body.style.opacity = '0';
+                    document.body.style.transition = 'opacity 0.4s ease';
+                    setTimeout(() => {
+                        window.location.href = 'index.html#projects';
+                    }, 400);
+                });
+            }
+
         });
 
-        // Add smooth scrolling
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                }
+        // --------------------------------------------------
+        // Page Load Fade In
+        // --------------------------------------------------
+        window.addEventListener('load', () => {
+            document.body.style.opacity = '0';
+            document.body.style.transition = 'opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1)';
+            requestAnimationFrame(() => {
+                document.body.style.opacity = '1';
             });
         });
     </script>
+
 </body>
 
 </html>
